@@ -1,0 +1,3 @@
+# Aprendizados da semana
+
+Nessa primeira semana de onboarding na Labenu tive o privilégio de acompanhar várias palestras interessantes, desde o modelo de aprendizado, pedagogia do curso, empregabilidade, rotina, diversidade, fatoros socioemocionais e enfim vários temas que nos fizeram emergir dentro da instituição e conhecer os membros e a staff, e recebemos o nome de grupo **Maryam**. Dentro desse conteúdo aprendemos a fazer o setup das ferramentas necessárias que irão nos possibilitar a praticar e realizar os exercícios e projetos desenvolvidos durante todo o curso e nossa vida professional, como no caso do Terminal git bash, introdução no github e também a editar no VScode. Tivemos tambem algumas dinámicas em grupo para conhecermos a nossa turma e os instrutores.
