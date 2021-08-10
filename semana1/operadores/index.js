@@ -75,3 +75,80 @@ console.log('O primeiro numero é maior que segundo?', teste1)
 console.log('O primeiro numero é igual ao segundo?', teste2)
 console.log('O primeiro numero é divisível pelo segundo?', teste3 === 0)
 console.log('O segundo numero é divisível pelo primeiro?', teste4 === 0)
+
+//==========================================================================================================================//
+//==========================================================================================================================//
+//==========================================================================================================================//
+
+// Desafios
+
+// Exercício 1
+
+// kelvin = (grausFahrenheit - 32)*(5/9) + 273.15
+// grausFahrenheit = (grausCelsius)*(9/5) + 32
+
+const a = 77
+const b = 80
+const c = 30
+
+//a
+console.log((a - 32)*(5/9) + 273.15, 'K')
+//b
+console.log((b)*(9/5) + 32, "°F")
+//c
+console.log((c)*(9/5) + 32, "°F", ((c)*(9/5) + 32 - 32)*(5/9) + 273.15, 'K')
+//d
+let tempEscolhida = Number(prompt('Escolha uma temperatura em graus Celsius:'))
+let resultEscolhidaF = ((tempEscolhida)*(9/5) + 32)
+let resultEscolhidaK = (((tempEscolhida)*(9/5) + 32 - 32)*(5/9) + 273.15)
+
+console.log('O valor de Celsius em Fahrenheit e Kelvin são:', resultEscolhidaF, "°F e", resultEscolhidaK, "K")
+
+// Exercício 2
+
+const valor = 0.05
+const cliente = 280
+//a
+let custo = valor*cliente
+console.log('O valor a ser pago por uma residência que consume 280 kWh é de R$', custo, "reais.")
+//b
+let desconto = 0.15
+let descontoCusto = custo*desconto
+let novoCusto = custo-descontoCusto
+
+console.log('O valor a ser pago pela mesma residência com um desconto de 15% é de R$', novoCusto, "reais.")
+
+// Exercício 3
+
+// kg = lb/2.2046 
+// kg = oz/35.274
+// m = mi/0.00062137
+// m = ft/3.2808
+// L = gal/0.26417
+// L = xic × 0,24
+
+let lb = 20
+let oz = 10.5
+let mi = 100
+let ft = 50
+let gal = 103.56
+let xic = 450
+
+let lbToKg = lb/2.2046 
+let ozToKg = oz/35.274 
+let miToM = mi/0.00062137 
+let ftToM = ft/3.2808
+let galToL = gal/0.26417 
+let xicToL = xic * 0.24
+
+//Letra a, b, c, d, e, f
+console.log('20lb equivalem a', lbToKg,'kg')
+console.log('10.5oz equivalem a', ozToKg, 'kg') 
+console.log('100mi equivalem a', miToM, 'm')
+console.log('50ft equivalem a', ftToM, 'm')
+console.log('103.56gal equivalem a', galToL, 'l')
+console.log('450 xic equivalem a', xicToL,'l')
+
+//Letra g
+let userEscolhe = Number(prompt("Insira o valor da distância em ft(pés):"))
+console.log(userEscolhe,'ft equivalem a', (userEscolhe/3.2808), 'm')
