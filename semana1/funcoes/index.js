@@ -109,3 +109,33 @@ subtracao(primeiroNumero, segundoNumero)
 multiplicacao(primeiroNumero, segundoNumero) 
 divisao(primeiroNumero, segundoNumero) 
 
+//===================================================================================================================================//
+//===================================================================================================================================//
+//===================================================================================================================================//
+
+// Desafios
+
+// Exercício 1
+//a)
+const funcaoArrow = (variavel) => {
+    console.log(variavel)
+}
+
+funcaoArrow("Murilo Terenciani Carolino")
+
+//b)
+const resultadoSoma = (number1, number2) => {
+    let contaSoma = (number1+number2)
+    funcaoArrow(contaSoma)
+}
+
+resultadoSoma(5, 2)
+
+// Exercício 2
+function pitagoras(catetoA, catetoB) {
+    const hipotenusa = (((catetoA**2)+(catetoB**2))**(1/2))
+    return hipotenusa
+}
+
+const valorHipotenusa = pitagoras(3, 4)
+console.log(valorHipotenusa)
