@@ -104,6 +104,12 @@ function checaRenovacaoRG() {
   let idade = anoAtual1 - nascimento
   let diferencaAnos = anoAtual1 - carteiraEmissao
   
+  const condicao1 = (idade <= 20 && diferencaAnos >= 5) 
+  const condicao2 = ((idade > 20 && idade <=50) && diferencaAnos >= 10) 
+  const condicao3 = (idade > 50 && diferencaAnos >= 15) 
+
+  console.log(condicao1 || condicao2 || condicao3)
+
   // if (idade <= 20) {
   //   console.log(diferencaAnos >= 5)
   // }
@@ -113,25 +119,22 @@ function checaRenovacaoRG() {
   // if (idade > 50) {
   //   console.log(diferencaAnos >= 15)
   // }
-
-  const condicao1 = (idade <= 20 && diferencaAnos >= 5) 
-  const condicao2 = ((idade > 20 && idade <=50) && diferencaAnos >= 10) 
-  const condicao3 = (idade > 50 && diferencaAnos >= 15) 
-
-  console.log(condicao1 || condicao2 || condicao3)
-
-
-
 }
 
 // EXERCÍCIO 14
 function checaAnoBissexto(ano) {
-  // implemente sua lógica aqui
+  const cond1 = ((ano % 4 === 0) && (ano % 100 === 0) && (ano % 400 === 0))
+  const cond2 = ((ano % 4 === 0) && (ano % 100 !== 0))
 
+  return (cond1 || cond2)
 }
 
 // EXERCÍCIO 15
 function checaValidadeInscricaoLabenu() {
-  // implemente sua lógica aqui
+  let maiorIdade = prompt('Você tem mais de 18 anos?')
+  let ensino = prompt('Você possui ensino médio completo?')
+  let disponibilidade = prompt('Você possui disponibilidade exclusiva durante os horários do curso?')
 
+  const inscricao = ((maiorIdade === "sim") && (ensino === "sim") && (disponibilidade === 'sim'))
+  console.log(inscricao)
 }
