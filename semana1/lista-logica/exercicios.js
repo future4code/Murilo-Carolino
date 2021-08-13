@@ -104,15 +104,24 @@ function checaRenovacaoRG() {
   let idade = anoAtual1 - nascimento
   let diferencaAnos = anoAtual1 - carteiraEmissao
   
-  if (idade <= 20) {
-    console.log(diferencaAnos >= 5)
-  }
-  if ((idade > 20 && idade <=50)) {
-    console.log(diferencaAnos >= 10)
-  }
-  if (idade > 50) {
-    console.log(diferencaAnos >= 15)
-  }
+  // if (idade <= 20) {
+  //   console.log(diferencaAnos >= 5)
+  // }
+  // if ((idade > 20 && idade <=50)) {
+  //   console.log(diferencaAnos >= 10)
+  // }
+  // if (idade > 50) {
+  //   console.log(diferencaAnos >= 15)
+  // }
+
+  const condicao1 = (idade <= 20 && diferencaAnos >= 5) 
+  const condicao2 = ((idade > 20 && idade <=50) && diferencaAnos >= 10) 
+  const condicao3 = (idade > 50 && diferencaAnos >= 15) 
+
+  console.log(condicao1 || condicao2 || condicao3)
+
+
+
 }
 
 // EXERCÍCIO 14
