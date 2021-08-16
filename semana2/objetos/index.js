@@ -118,3 +118,56 @@ preencherCarrinho(fruta3)
 //d)
 console.log(carrinho)
 
+//=============================================================================================================================================//
+//=============================================================================================================================================//
+//=============================================================================================================================================//
+
+// Desafios
+
+//1.
+function imprimeObjeto() {
+    let nomeUser = prompt('Qual é o seu nome?')
+    let idadeUser = Number(prompt('Qual é sua idade?'))
+    let profissaoUser = prompt('Qual é sua profissão?')
+    let objetoUser = {
+        nome: nomeUser,
+        idade: idadeUser,
+        profissao: profissaoUser
+    }
+    console.log(objetoUser)
+    console.log(typeof objetoUser)
+}
+
+imprimeObjeto()
+
+//2.
+const filme1 = {
+    nome: 'Efeito Borboleta',
+    lancamento: 2004
+}
+
+const filme2 = {
+    nome: 'Clube de Luta',
+    lancamento: 1999
+}
+
+function lancamentoFilmes(objeto1, objeto2) {
+    console.log(`O primeiro filme foi lançado antes do segundo? ${objeto1.lancamento < objeto2.lancamento} `)
+    console.log(`O primeiro filme foi lançado no mesmo ano do segundo? ${objeto1.lancamento === objeto2.lancamento}`)
+}
+
+lancamentoFilmes(filme1, filme2)
+
+//3.
+function controleEstoque(fruta) {
+    const dispFruta = {
+        ...fruta,
+        disponibilidade: !fruta.disponibilidade
+    }
+    
+    return dispFruta
+}
+
+
+console.log(controleEstoque(fruta1))
+
