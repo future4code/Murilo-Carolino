@@ -87,3 +87,368 @@ if (generoFilme === 'fantasia' && precoIngresso < 15) {
     console.log('Escolha outro filme :(')
 }
 
+//=============================================================================================================================================//
+//=============================================================================================================================================//
+//=============================================================================================================================================//
+
+// Desafios
+
+//1.
+const genero = prompt('Qual é o gênero do filme?')
+const preco = Number(prompt('Qual é o preço do ingresso?'))
+
+if (genero === 'fantasia' && preco < 15) {
+    let snack = prompt('Qual snack que você quer comprar?')
+    console.log('Bom filme!')
+    console.log(`Aproveite o seu ${snack}`)
+} else {
+    console.log('Escolha outro filme :(')
+}
+
+//2.
+const nomeCompleto = prompt('Insira seu nome completo:')
+const tipoDeJogo = prompt('Insira o tipo de jogo: "IN" indica internacional e "DO" indica doméstico')
+const etapaDoJogo = prompt('Insira qual é a etapa do jogo: "SF" indica semi-final; "DT" indica decisão de terceiro lugar e "FI" indica final')
+const categoria = Number(prompt('Insira a categoria: Escolha entre "1", "2", "3" ou "4"'))
+const qtdDeIngressos = Number(prompt('Insira a quantidade de ingressos desejado:'))
+
+const objetoDePrecos = [
+    {tipoJogo: 'SF', 
+    categoria1: 1320, 
+    categoria2: 880,
+    categoria3: 550,
+    categoria4: 220},
+    {tipoJogo: 'DT', 
+    categoria1: 660, 
+    categoria2: 440,
+    categoria3: 330,
+    categoria4: 170},
+    {tipoJogo: 'FI', 
+    categoria1: 1980, 
+    categoria2: 1320,
+    categoria3: 880,
+    categoria4: 330}
+]
+   
+const valorDolar = 4.10
+
+//Semi-final
+if (etapaDoJogo === "SF") {
+    if(categoria === 1) {
+      if (tipoDeJogo === "DO") {
+        let precoUnitario = objetoDePrecos[0].categoria1
+        let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional 
+                        Etapa do jogo:  Semi-final
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    } else if (tipoDeJogo === "IN") {
+        let precoUnitario = (objetoDePrecos[0].categoria1)/(valorDolar)
+        let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Semi-final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+    } }
+    else if (categoria === 2) {
+        if (tipoDeJogo === "DO") {
+          let precoUnitario = objetoDePrecos[0].categoria2
+          let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional  
+                        Etapa do jogo:  Semi-final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    }   else if (tipoDeJogo === "IN") {
+         let precoUnitario = (objetoDePrecos[0].categoria2)/(valorDolar)
+         let precoGeral = precoUnitario * qtdDeIngressos
+         console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Semi-final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+    }} else if (categoria === 3) {
+        if (tipoDeJogo === "DO") {
+          let precoUnitario = objetoDePrecos[0].categoria3
+          let precoGeral = precoUnitario * qtdDeIngressos
+          console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional  
+                        Etapa do jogo:  Semi-final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    }   else if (tipoDeJogo === "IN") {
+          let precoUnitario = (objetoDePrecos[0].categoria3)/(valorDolar)
+          let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Semi-final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+    }} else if (categoria === 4) {
+        if (tipoDeJogo === "DO") {
+          let precoUnitario = objetoDePrecos[0].categoria4
+          let precoGeral = precoUnitario * qtdDeIngressos
+          console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional
+                        Etapa do jogo:  Semi-final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    } else if (tipoDeJogo === "IN") {
+        let precoUnitario = (objetoDePrecos[0].categoria4)/(valorDolar)
+        let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Semi-final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+  }
+}
+}
+
+// Disputa 3º lugar
+if (etapaDoJogo === "DT") {
+    if(categoria === 1) {
+      if (tipoDeJogo === "DO") {
+        let precoUnitario = objetoDePrecos[1].categoria1
+        let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional 
+                        Etapa do jogo:  Decisão 3º Lugar
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    } else if (tipoDeJogo === "IN") {
+        let precoUnitario = (objetoDePrecos[1].categoria1)/(valorDolar)
+        let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Decisão 3º Lugar
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+    } }
+    else if (categoria === 2) {
+        if (tipoDeJogo === "DO") {
+          let precoUnitario = objetoDePrecos[1].categoria2
+          let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional  
+                        Etapa do jogo:  Decisão 3º Lugar 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    }   else if (tipoDeJogo === "IN") {
+         let precoUnitario = (objetoDePrecos[1].categoria2)/(valorDolar)
+         let precoGeral = precoUnitario * qtdDeIngressos
+         console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Decisão 3º Lugar
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+    }} else if (categoria === 3) {
+        if (tipoDeJogo === "DO") {
+          let precoUnitario = objetoDePrecos[1].categoria3
+          let precoGeral = precoUnitario * qtdDeIngressos
+          console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional  
+                        Etapa do jogo:  Decisão 3º Lugar 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    }   else if (tipoDeJogo === "IN") {
+          let precoUnitario = (objetoDePrecos[1].categoria3)/(valorDolar)
+          let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Decisão 3º Lugar 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+    }} else if (categoria === 4) {
+        if (tipoDeJogo === "DO") {
+          let precoUnitario = objetoDePrecos[1].categoria4
+          let precoGeral = precoUnitario * qtdDeIngressos
+          console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional
+                        Etapa do jogo:  Decisão 3º Lugar 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    } else if (tipoDeJogo === "IN") {
+        let precoUnitario = (objetoDePrecos[1].categoria4)/(valorDolar)
+        let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Decisão 3º Lugar 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+  }
+}
+}
+
+// Final
+if (etapaDoJogo === "FI") {
+    if(categoria === 1) {
+      if (tipoDeJogo === "DO") {
+        let precoUnitario = objetoDePrecos[2].categoria1
+        let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional 
+                        Etapa do jogo:  Final
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    } else if (tipoDeJogo === "IN") {
+        let precoUnitario = (objetoDePrecos[2].categoria1)/(valorDolar)
+        let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+    } }
+    else if (categoria === 2) {
+        if (tipoDeJogo === "DO") {
+          let precoUnitario = objetoDePrecos[2].categoria2
+          let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional  
+                        Etapa do jogo:  Final
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    }   else if (tipoDeJogo === "IN") {
+         let precoUnitario = (objetoDePrecos[2].categoria2)/(valorDolar)
+         let precoGeral = precoUnitario * qtdDeIngressos
+         console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Final
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+    }} else if (categoria === 3) {
+        if (tipoDeJogo === "DO") {
+          let precoUnitario = objetoDePrecos[2].categoria3
+          let precoGeral = precoUnitario * qtdDeIngressos
+          console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional  
+                        Etapa do jogo:  Final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    }   else if (tipoDeJogo === "IN") {
+          let precoUnitario = (objetoDePrecos[2].categoria3)/(valorDolar)
+          let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+    }} else if (categoria === 4) {
+        if (tipoDeJogo === "DO") {
+          let precoUnitario = objetoDePrecos[2].categoria4
+          let precoGeral = precoUnitario * qtdDeIngressos
+          console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Nacional
+                        Etapa do jogo:  Final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: R$ ${precoUnitario}
+                        Valor total: R$ ${precoGeral}`)
+    } else if (tipoDeJogo === "IN") {
+        let precoUnitario = (objetoDePrecos[2].categoria4)/(valorDolar)
+        let precoGeral = precoUnitario * qtdDeIngressos
+        console.log(`---Dados da compra--- 
+                        Nome do cliente:  ${nomeCompleto} 
+                        Tipo do jogo: Internacional  
+                        Etapa do jogo:  Final 
+                        Categoria:  ${categoria} 
+                        Quantidade de Ingressos:  ${qtdDeIngressos} 
+                        ---Valores--- 
+                        Valor do ingresso: U$ ${precoUnitario}
+                        Valor total: U$ ${precoGeral}`)
+  }
+}
+}
