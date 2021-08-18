@@ -117,3 +117,67 @@ const maiorEMenor = (array) => {
 }
 
 maiorEMenor(arrayOriginal)
+
+//==========================================================================================================================================//
+//==========================================================================================================================================//
+//==========================================================================================================================================//
+
+// Desafios
+
+//1.
+console.log('Vamos jogar!')
+const numPensado = Number(prompt('Em qual número você pensou?'))
+
+const jogoAdivinharNumero = (numeroPensado) =>{
+    let chute = Number(prompt('Jogador, qual é o número de seu chute?'))
+    let contador = 1
+    while (chute != numeroPensado) {
+        if (chute > numeroPensado) {
+            console.log(`O número do seu chute foi: ${chute}`)
+            console.log(`Nananinanão. O número escolhido é menor que ${chute}`)
+        } else {
+            console.log(`O número do seu chute foi: ${chute}`)
+            console.log(`Nananinanão. O número escolhido é maior que ${chute}`)
+        }
+        let novoChute = Number(prompt('Jogador escolha um novo número:'))
+        chute = novoChute
+        contador++
+    }
+    console.log(`O número do seu chute foi: ${chute}`)
+    console.log(`Acertou champs!!! O número pensado pelo usuário era ${numPensado} mesmo. Bora jogar de novo?`)
+    console.log(`O seu número de tentativas foi : ${contador}`)
+}
+
+jogoAdivinharNumero(numPensado)
+
+//2.
+console.log('Vamos jogar!')
+
+const numeroComputador = () => {
+    const numeroEscolhido = Math.floor(Math.random()*100)
+    return numeroEscolhido
+}
+
+const resultadoFinal = numeroComputador()
+
+const jogoAdivinharNumeroPC = (computador) => {
+    let chute = Number(prompt('Jogador, qual é o número de seu chute?'))
+    let contador = 1
+    while (chute != computador) {
+        if (chute > computador) {
+            console.log(`O número do seu chute foi: ${chute}`)
+            console.log(`Nananinanão. O número escolhido é menor que ${chute}`)
+        } else {
+            console.log(`O número do seu chute foi: ${chute}`)
+            console.log(`Nananinanão. O número escolhido é maior que ${chute}`)
+        }
+        let novoChute = Number(prompt('Jogador escolha um novo número:'))
+        chute = novoChute
+        contador++
+    }
+    console.log(`O número do seu chute foi: ${chute}`)
+    console.log(`Acertou champs!!! Nem o computador está te derrubando, bora jogar mais?`)
+    console.log(`O seu número de tentativas foi : ${contador}`)
+}
+
+jogoAdivinharNumeroPC(resultadoFinal)
