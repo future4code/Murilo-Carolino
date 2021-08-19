@@ -104,3 +104,46 @@ const fraseDeCompra = apenasYpe.map((item, index, array) => {
 })
 
 console.log(fraseDeCompra)
+
+//===========================================================================================================================================//
+//===========================================================================================================================================//
+//===========================================================================================================================================//
+
+// Desafios
+
+//1.
+
+const pokemons = [
+    { nome: "Bulbasaur", tipo: "grama" },
+    { nome: "Bellsprout", tipo: "grama" },
+    { nome: "Charmander", tipo: "fogo" },
+    { nome: "Vulpix", tipo: "fogo" },
+    { nome: "Squirtle", tipo: "água" },
+    { nome: "Psyduck", tipo: "água" },
+]
+
+//a)
+const onrdemAlfabetica = pokemons.sort(function (x, y) {
+    let a = x.nome.toUpperCase()
+    let b = y.nome.toUpperCase()
+    if (a > b) {
+      return 1
+    } else if (a < b) {
+      return -1
+    } else {
+      return 0
+    }
+})
+  
+console.log(pokemons)
+
+//b)
+const mapearTipos = pokemons.map((item, index, array)  => {
+    return item.tipo
+})
+  
+const tiposDePokemons = mapearTipos.filter((item, index, array) => {
+      return array.indexOf(item) === index
+})
+  
+console.log(tiposDePokemons)
