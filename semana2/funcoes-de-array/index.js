@@ -123,9 +123,11 @@ const pokemons = [
 ]
 
 //a)
-const onrdemAlfabetica = pokemons.sort(function (x, y) {
-    let a = x.nome.toUpperCase()
-    let b = y.nome.toUpperCase()
+const pokemonsOrdem = pokemons.map((item, index, array) => {
+    return item.nome
+})
+
+const ordemAlfabetica = pokemonsOrdem.sort(function (a, b) {
     if (a > b) {
       return 1
     } else if (a < b) {
@@ -135,7 +137,7 @@ const onrdemAlfabetica = pokemons.sort(function (x, y) {
     }
 })
   
-console.log(pokemons)
+console.log(ordemAlfabetica)
 
 //b)
 const mapearTipos = pokemons.map((item, index, array)  => {
