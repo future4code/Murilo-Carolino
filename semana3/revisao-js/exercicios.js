@@ -202,5 +202,13 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-
+    const ordenadoData = consultas.map((item, index, array) => {
+        const novaConsulta = [{
+            ...consultas,
+            dataDaConsulta = new Date+item.dataDaConsulta
+        }]
+    }).sort((a,b) => {
+        b.dataDaConsulta - a.dataDaConsulta
+    })
+    return ordenadoData
 }
