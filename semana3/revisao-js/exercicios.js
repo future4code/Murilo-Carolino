@@ -130,7 +130,7 @@ function retornaSegundoMaiorESegundoMenor(array) {
     }
   }
   array.push(maiorNumero)
-  let menorNumero = 9999999
+  let menorNumero = +Infinity
   let indiceMenorNumero 
   for (let i = 0; i < array.length; i++) {
     if (array[i] < menorNumero) {
@@ -140,7 +140,7 @@ function retornaSegundoMaiorESegundoMenor(array) {
   }
   array.splice(indiceMenorNumero, 1)
   
-  let segundoMenorNumero = 9999999
+  let segundoMenorNumero = +Infinity
   for (let i = 0; i < array.length; i++) {
     if (array[i] < segundoMenorNumero) {
       segundoMenorNumero = array[i]
@@ -152,12 +152,13 @@ function retornaSegundoMaiorESegundoMenor(array) {
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-   
+   let chamada = `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores[0]}, ${filme.atores[1]}, ${filme.atores[2]}, ${filme.atores[3]}.`
+   return chamada
 }
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+
 }
 
 // EXERCÍCIO 13A
