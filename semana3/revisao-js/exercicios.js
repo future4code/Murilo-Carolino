@@ -92,7 +92,13 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-   
+    const novoArray = []
+    for (let i = 0; novoArray.length < n; i++) {
+        if (i % 2 == 0) {
+      novoArray.push(i)
+    }
+    }
+    return novoArray
 }
 
 // EXERCÍCIO 09
