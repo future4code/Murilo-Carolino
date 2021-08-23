@@ -183,7 +183,13 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+    for (let objeto of contas) {
+        for (let valor of objeto.compras) {
+            objeto.saldoTotal = objeto.saldoTotal - valor
+        }
+        objeto.compras = []
+    }
+    return contas
 }
 
 // EXERCÍCIO 15A
@@ -196,5 +202,5 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
+
 }
