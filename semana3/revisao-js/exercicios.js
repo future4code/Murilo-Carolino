@@ -188,7 +188,10 @@ function retornaContasComSaldoAtualizado(contas) {
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+    const ordenado = consultas.sort((a, b) => {
+        return a.nome.localeCompare(b.nome)
+    })
+    return ordenado
 }
 
 // EXERCÍCIO 15B
