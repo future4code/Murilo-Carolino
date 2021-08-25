@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Adicionar Produto</title>
 </head>
-<body>
-    <div>
-        <h1><b>Rebel Yell Records</b></h1>
-    </div>
+
+<body class="fundo">
+    <header>
+        <div>
+            <h1 class="titulo"><b>Rebel Yell Records</b></h1>
+        </div>
+        
+        <div class="links">
+            <button onclick="document.location='index.html'">Página Inicial</button>
+            <button onclick="document.location='ctrl-estoque.html'">Controle de Estoque</button>
+            <button onclick="document.location='add-produto.html'">Adicionar Produto</button>
+            <button onclick="document.location='funcionarios.html'">Funcionários</button>
+        </div>
+    </header>
     
-    <div>
-        <a href="./index.html">Página Inicial</a>
-        <a href="./ctrl-estoque.html">Controle de Estoque</a>
-        <a href="./add-produto.html">Adicionar Produto</a>
-        <a href="./funcionarios.html">Funcionários</a>
-    </div>
 
     
-    <h2>Adicionar Produto</h2>
-    <form action="">
+    <h2 class="corpo">Adicionar Produto</h2>
+    <form class="formulario" action="">
         <div>
             <label for="link-foto">Link para foto: </label>
             <input type="url" id="link-foto" name="link-foto">
@@ -50,6 +55,13 @@
         </div>
 
     </form>
-
+    <footer class="footer">
+        <div class="rodape">   
+            <p>Contato: <a href="mailto:rebelyell@gmail.com">rebelyell@gmail.com</a></p> 
+            <p>Telefone: (11) 99876 - 1234</p>
+            <p>Endereço: Wall Street, 1999 - São Paulo</p>
+            <p>© 2021 Rebel Yell Records. Todos os direitos reservados </p>
+        </div>
+    </footer>
 </body>
 </html>

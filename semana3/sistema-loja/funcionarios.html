@@ -4,27 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Funcionários</title>
 </head>
-<body>
-    <div>
-        <h1><b>Rebel Yell Records</b></h1>
-    </div>
+<body class="fundo">
+    <header>
+        <div>
+            <h1 class="titulo"><b>Rebel Yell Records</b></h1>
+        </div>
+        
+        <div class="links">
+            <button onclick="document.location='index.html'">Página Inicial</button>
+            <button onclick="document.location='ctrl-estoque.html'">Controle de Estoque</button>
+            <button onclick="document.location='add-produto.html'">Adicionar Produto</button>
+            <button onclick="document.location='funcionarios.html'">Funcionários</button>
+        </div>
     
-    <div>
-        <a href="./index.html">Página Inicial</a>
-        <a href="./ctrl-estoque.html">Controle de Estoque</a>
-        <a href="./add-produto.html">Adicionar Produto</a>
-        <a href="./funcionarios.html">Funcionários</a>
-    </div>
+        <h2 class="corpo">Funcionários</h2>
+    </header>
 
-    <h2>Funcionários</h2>
-    <ul>
+    <ul class="lista">
         <li><img src="./img/funcionarios/Amanda.jfif" alt="Foto da Amanda"> Amanda Rangel</li>
         <li><img src="./img/funcionarios/Lucas.jfif" alt="Foto dO Lucas">Lucas Homero Sabino</li>
         <li><img src="./img/funcionarios/Murilo.jfif" alt="Foto do Murilo">Murilo Terenciani Carolino</li>
         <li><img src="./img/funcionarios/Sarah.jfif" alt="Foto da Sarah">Sarah Romanhol Falconiere</li>
     </ul>
+
+    <footer class="footer">
+        <div class="rodape">   
+            <p>Contato: <a href="mailto:rebelyell@gmail.com">rebelyell@gmail.com</a></p> 
+            <p>Telefone: (11) 99876 - 1234</p>
+            <p>Endereço: Wall Street, 1999 - São Paulo</p>
+            <p>© 2021 Rebel Yell Records. Todos os direitos reservados </p>
+        </div>
+    </footer>
         
 </body>
 </html>
