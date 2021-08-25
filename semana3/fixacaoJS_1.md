@@ -1,4 +1,4 @@
-# Exercícios de Fixação de Javascript - Treino 1 
+# Exercícios de Fixação de Javascript - Treino 1 🏋🏽‍♀️
 
 
 ### Enunciado
