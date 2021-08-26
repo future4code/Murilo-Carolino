@@ -105,6 +105,16 @@ table {
     width: 60%;
 }
 
+div table tbody tr td:nth-child(2) {
+    text-align: center;
+}
+div table tbody tr td:nth-child(3) {
+    text-align: center;
+}
+div table tbody tr td:nth-child(4) {
+    text-align: center;
+}
+
 td button {
     background-color: #fadf63;
     width: 150px;
