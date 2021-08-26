@@ -25,20 +25,12 @@ button:focus {
     color: white;
 }
 
-img {
-    width: 100px;
-}
-
 .ajusteImagens {
     width: 50px 
 }
 
 div>p:first-child {
     display: inline;
-}
-
-div img {
-    background: black;
 }
 
 .botao-amarelo {
