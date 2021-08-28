@@ -104,6 +104,30 @@
 .distanciaIntro {
     position: relative;
 }
+/* About me */
+.divAbout {
+    padding-top: 20%;
+    width: 600px;
+    position: relative;
+    left: 5%;
+}
+
+.divSkills {
+    float:right;
+    position: relative;
+    right: 15%;
+    bottom: 47%;
+}
+.divSkills img {
+    width: 30%;
+}
+
+
+.tituloSobre {
+    position: absolute;
+    left: 20%;
+    top: 20%;
+}
 
 /* Footer */
 
