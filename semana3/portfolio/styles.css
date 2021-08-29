@@ -116,7 +116,7 @@
     float:right;
     position: relative;
     right: 15%;
-    bottom: 47%;
+    bottom: 67%;
 }
 .divSkills img {
     width: 30%;
@@ -128,6 +128,69 @@
     left: 20%;
     top: 20%;
 }
+/* Contato */
+.divContact {
+    position: relative;
+    padding-top: 25%;
+    left: 10%;
+}
+.formulario {
+    width: 500px;
+    text-align: right;
+}
+
+.formulario button {
+    height: 30px;
+    width: 70px;
+    
+}
+
+#input {
+    width: 70%;
+    background-color: #dddddd;
+    height: 20px;
+    margin-bottom: 10px;
+}
+/* Projetos */
+
+.tituloProjetos {
+    margin-top: 10%;
+    margin-right: 50%;
+}
+
+.divTabela {
+    padding-top: 100px;
+    padding-left: 370px;
+}
+
+
+.divTabela img {
+    width: 35%;
+}
+
+.divTabela td:nth-child(2) {
+    position: relative;
+    right: 10%;
+}
+.divBlack {
+    position: relative;
+    top: 15%;
+}
+
+.tamanho {
+    width: 30%
+}
+
+.tituloProjetos1 {
+    margin-top: 5%;
+    margin-right: 50%;
+}
+
+.divBlack p{
+    text-align: center;
+    margin-top: 1%;
+}
+
 
 /* Footer */
 
@@ -144,3 +207,4 @@
 #instimg {
     width: 17%;
 }
+
