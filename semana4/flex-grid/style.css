@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.containerBody {
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    grid-template-columns: 1fr 4fr;
+    height: 100vh;
+}
+
+header {
+    background-color: mediumvioletred;
+    grid-column: 1/ -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+}
+
+header button {
+    width: 50px;
+    height: 20px;
+}
+
+header img {
+    width: 20px;
+}
+
+header h1 {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+nav {
+    background-color: #f2d0e0;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 15fr;
+    align-items: start;
+    justify-items: start;
+    padding-left: 10px;
+    padding-top: 15px;
+}
+
+nav img {
+    width: 20px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 15px;
+    column-gap: 15px;
+    margin-left:30px;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+main div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 2px 3px 4px 2px darkgrey;
+    width: 95%;
+}
+
+main h3 {
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+main p {
+    margin-bottom: 5px;
+}
+
+main img {
+    width: 100%;
+}
+
+footer {
+    display: flex;
+    background-color: mediumvioletred;
+    grid-column: 1/ -1;
+    align-items: center;
+    justify-content: center;
+}
