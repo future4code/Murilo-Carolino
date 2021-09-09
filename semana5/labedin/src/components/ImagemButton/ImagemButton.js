@@ -14,6 +14,11 @@ const ContainerImagemButton = styled.div `
         width: 30px;
         margin-right: 10px;
     }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
 `
 
 
@@ -21,7 +26,7 @@ function ImagemButton(props) {
     return (
         <ContainerImagemButton>
             <img src={ props.imagem }/>
-            <p>{ props.texto }</p>
+            <a href={props.link}><p>{ props.texto }</p></a>
         </ContainerImagemButton>
 
     )

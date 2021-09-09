@@ -111,13 +111,24 @@ function App() {
           <h2>Minhas redes sociais</h2>
           <ImagemButton 
             imagem="https://d2v9ipibika81v.cloudfront.net/uploads/sites/261/2017/01/facebook-logo-3.png" 
-            texto="Facebook" 
+            texto="Facebook"
+            link="https://www.facebook.com/Murilohim/" 
           />        
-
           <ImagemButton 
-            imagem="https://logodownload.org/wp-content/uploads/2014/09/twitter-logo-1-1.png" 
-            texto="Twitter" 
+            imagem="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Instagram_colored_svg_1-512.png" 
+            texto="Instagram" 
+            link="https://www.instagram.com/murilohim/"
           />        
+          <ImagemButton 
+            imagem="https://cdn-icons-png.flaticon.com/512/25/25231.png" 
+            texto="GitHub" 
+            link="https://github.com/Murilohim"
+          />    
+          <ImagemButton 
+            imagem="https://img2.gratispng.com/20180403/klw/kisspng-linkedin-logo-social-media-business-professional-n-style-5ac33a87e27554.0089620115227439439276.jpg" 
+            texto="Linkedin" 
+            link="https://www.linkedin.com/in/muriloterenciani/"
+          />    
         </ContainerSecao>
       </Main>
     </Universal>
