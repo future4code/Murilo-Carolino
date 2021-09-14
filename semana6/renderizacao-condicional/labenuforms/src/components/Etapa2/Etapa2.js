@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PerguntaFechada from "./Perguntas/PerguntaFechada";
 
 const ContainerEtapa2 = styled.div `
 text-align: center;
@@ -11,10 +12,8 @@ class Etapa2 extends React.Component {
             <ContainerEtapa2>
                 <h2>ETAPA 2 - INFORMAÇÕES DO ENSINO SUPERIOR</h2>
                 <div>
-                    <p>5. Qual o seu curso?</p>
-                    <input/>
-                    <p>6. Qual a unidade de ensino?</p>
-                    <input/>
+                    <PerguntaFechada pergunta={"5. Qual o seu curso?"}/>
+                    <PerguntaFechada pergunta={"6. Qual a unidade de ensino?"}/>
                 </div>
             </ContainerEtapa2>
         )
