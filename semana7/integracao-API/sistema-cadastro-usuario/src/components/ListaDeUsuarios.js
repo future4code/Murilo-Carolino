@@ -46,21 +46,18 @@ class Lista extends React.Component {
         })
     }
 
-    deleteUser = () => {
-        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/:id"
-        const params = {
-            params: {
-                id: this.state.users.id
-            }
-        }
+    deleteUser = (user) => {
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${user.id}`
+        console.log(user)
 
         axios
-        .delete(url, params, headers)
+        .delete(url, headers)
         .then((res) => {
-            console.log("Deletei o id")
+            this.getAllUsers()
+            alert(`O usuário ${user.name} foi deletado.`)
         })
         .catch((err) => {   
-            console.log(err)
+            alert(err.response)
         })
     }
 
@@ -69,7 +66,7 @@ class Lista extends React.Component {
             return (
                 <ContainerListUsers key={user.id}>
                     <p>{user.name}</p>
-                    <button onClick={this.deleteUser}>X</button>
+                    <button onClick={() => this.deleteUser(user)}>X</button>
                 </ContainerListUsers>
             )
         })
