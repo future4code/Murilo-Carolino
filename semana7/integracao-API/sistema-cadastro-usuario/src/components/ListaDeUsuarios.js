@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
+import DetalhesUsuario from "./DetalhesUsuario";
 
 const headers = {
     headers: {
@@ -23,7 +24,8 @@ const ContainerListUsers = styled.div `
 
 class Lista extends React.Component {
     state = {
-        users: []
+        users: [],
+        details: [],
     }
 
     componentDidMount() {
@@ -48,34 +50,65 @@ class Lista extends React.Component {
 
     deleteUser = (user) => {
         const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${user.id}`
-        console.log(user)
 
-        axios
-        .delete(url, headers)
-        .then((res) => {
-            this.getAllUsers()
-            alert(`O usuário ${user.name} foi deletado.`)
-        })
-        .catch((err) => {   
-            alert(err.response)
-        })
+        if (window.confirm("Tem certeza de que deseja deletar?")) {
+            axios
+            .delete(url, headers)
+            .then((res) => {
+                this.getAllUsers()
+                alert(`O usuário ${user.name} foi deletado.`)
+            })
+            .catch((err) => {   
+                alert(err.response)
+            })
+        } else {
+            alert('Usuário não deletado.')
+        }
+
     }
 
+    userDetails = (user) => {
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${user.id}`
+
+        axios
+        .get(url, headers)
+        .then((res) => {
+            this.setState({
+                details: res.data
+            })
+        })
+        .catch((err) => {
+            alert("err.response")
+        })
+
+    }
+
+
     render () {
+        const detalhes = 
+                <div>
+                    <p>{this.state.details.name}</p>
+                    <p>{this.state.details.email}</p>
+                    <button>X</button>
+                </div>
+            
         const usersComponents = this.state.users.map((user) => {
             return (
                 <ContainerListUsers key={user.id}>
-                    <p>{user.name}</p>
+                    <p onClick={() => this.props.detailsPage(user)}>{user.name}</p>
                     <button onClick={() => this.deleteUser(user)}>X</button>
                 </ContainerListUsers>
             )
         })
 
         return (
-            <ContainerList>
-                <h1>Lista de usuários cadastrados:</h1>
-                {usersComponents}
-            </ContainerList>
+            <div>
+                <ContainerList>
+                    <h1>Lista de usuários cadastrados:</h1>
+                    {usersComponents}
+                </ContainerList>
+                <button onClick={this.props.backPage}>Ir para a página de Cadastro</button>
+            </div>
         )
     }
 }

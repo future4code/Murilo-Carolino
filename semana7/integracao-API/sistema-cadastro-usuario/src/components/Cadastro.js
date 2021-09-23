@@ -68,20 +68,23 @@ class Cadastro extends React.Component {
 
     render () {
         return (
-            <ContainerCadastro>
-                <h1>Cadastro de Usuário</h1>
-                <ContainerDados>
-                    <label>
-                        Nome: 
-                        <input value={this.state.name} onChange={this.handleName}/>
-                    </label>
-                    <label>
-                        E-mail: 
-                        <input value={this.state.email} onChange={this.handleEmail}/>
-                    </label>
-                    <button onClick={this.createUser}>Enviar</button>
-                </ContainerDados>
-            </ContainerCadastro>
+            <div>
+                <ContainerCadastro>
+                    <h1>Cadastro de Usuário</h1>
+                    <ContainerDados>
+                        <label>
+                            Nome: 
+                            <input value={this.state.name} onChange={this.handleName}/>
+                        </label>
+                        <label>
+                            E-mail: 
+                            <input value={this.state.email} onChange={this.handleEmail}/>
+                        </label>
+                        <button onClick={this.createUser}>Enviar</button>
+                    </ContainerDados>
+                </ContainerCadastro>
+                <button onClick={this.props.nextPage}>Ir para a lista de Usuários</button>
+            </div>
         )
     }
 }

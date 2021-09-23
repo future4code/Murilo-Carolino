@@ -3,19 +3,23 @@ import './App.css';
 import Cadastro from './components/Cadastro';
 import Lista from './components/ListaDeUsuarios';
 import React from 'react';
+import DetalhesUsuario from './components/DetalhesUsuario';
+import axios from 'axios';
 
 class App extends React.Component {
   state = {
-    page: 1,
-    buttonText: "Ir para a lista de Usuários",
+    page: "registration",
+    details: []
   }
 
   renderPage = () => {
     switch (this.state.page) {
-      case 1:
-        return <Cadastro />;
-      case 2:
-        return <Lista />;
+      case "registration":
+        return <Cadastro nextPage={this.nextPage} />;
+      case "listUsers":
+        return <Lista  backPage={this.backPage} detailsPage={this.detailsPage} />;
+      case "userDetails":
+        return <DetalhesUsuario listUsers={this.nextPage} userDados={this.state.details}/>
       default:
         return <Cadastro></Cadastro>;
     }
@@ -24,23 +28,44 @@ class App extends React.Component {
   nextPage = () => {
 
     this.setState({
-      page: (this.state.page + 1),
-      buttonText: "Ir para a página de Cadastro",
+      page: "listUsers",
     })
   }
 
   backPage = () => {
     this.setState({
-      page: this.state.page - 1,
-      buttonText: "Ir para a lista de Usuários"
+      page: "registration",
     })
   }
 
+  detailsPage = (user) => {
+    this.setState({
+      page: "userDetails",
+    })
+
+    const headers = {
+      headers: {
+          Authorization: "murilo-terenciani-maryam"
+      }
+    }
+
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${user.id}`
+    axios
+    .get(url, headers)
+    .then((res) => {
+        this.setState({
+            details: res.data
+        })
+    })
+    .catch((err) => {
+        alert(err.response.data.message)
+    })
+  }
+  
   render () {
     return (
       <div>
         {this.renderPage()}
-        {this.state.page > 1 ? <button onClick={this.backPage}>{this.state.buttonText}</button> : <button onClick={this.nextPage}>{this.state.buttonText}</button>}
       </div>
     )
   }
