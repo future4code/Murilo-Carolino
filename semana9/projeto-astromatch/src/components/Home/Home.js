@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ContainerPage, ContainerProfile, Infos, Texto, Bio, HeaderApp, FooterApp, ContainerHome, ContainerProfileAndButtons } from './Styles'
+import { ContainerPage, ContainerProfile, Infos, Texto, Bio, HeaderApp, FooterApp, ContainerHome, ContainerProfileAndButtons } from './styles'
 import logo from '../../imgs/logo.png'
 
 const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/murilo-terenciani-maryam/person'
+const url1 = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/murilo-terenciani-maryam/choose-person'
 
-function Home() {
+
+function Home(props) {
     const [profile, setProfile] = useState({})
 
     useEffect(() => {
         getProfileToChoose()
     }, [])
+
 
     const getProfileToChoose = () => {
         axios
@@ -21,6 +24,33 @@ function Home() {
         .catch((err) => {
             alert(err)
         })
+    }
+
+    const choosePerson = (boolean) => {
+        const headers = {
+            headers: 
+                { 
+                    "Content-Type": "application/json" 
+                }
+        }
+
+        const body = 
+            {
+                "id": profile.id,
+                "choice": boolean
+            }
+        
+        axios
+        .post(url1, body, headers)
+        .then((res) => {
+            console.log(res)
+            getProfileToChoose()
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
+        
     }
 
     const cardProfile = (
@@ -35,19 +65,21 @@ function Home() {
             </Texto>
         </ContainerProfile>
     )
+
     console.log(profile)
+
     return (
         <ContainerPage>
             <ContainerHome>
                 <HeaderApp>
                     <img src={logo} alt="Logo do Aplicativo AstroMatch"/>
-                    <button>Matches</button>
+                    <button onClick={props.nextPage}>Matches</button>
                 </HeaderApp>
                 <ContainerProfileAndButtons>
                     {cardProfile}
                     <FooterApp>
-                        <button>Não Curtir</button>
-                        <button>Curtir</button>
+                        <button onClick={() => choosePerson(false)}>Não Curtir</button>
+                        <button onClick={() => choosePerson(true)}>Curtir</button>
                     </FooterApp>
                 </ContainerProfileAndButtons>
             </ContainerHome>
