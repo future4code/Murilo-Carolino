@@ -17,7 +17,6 @@ function Matches(props) {
         .get(url)
         .then((res) => {
             setMatches(res.data.matches)
-            console.log(res.data.matches)
         })
         .catch((err) => {
             console.log(err)

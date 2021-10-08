@@ -22,9 +22,9 @@ function App() {
   const renderPage = () => {
     switch (page) {
       case "home":
-        return <Home nextPage={nextPage}></Home>;
+        return <Home nextPage={nextPage} resetar={clearApp}></Home>;
       case "matches":
-        return <Matches backPage={backPage}></Matches>
+        return <Matches backPage={backPage} resetar={clearApp}></Matches>
       default:
         return <Home></Home>
     }
@@ -49,18 +49,19 @@ function App() {
     axios
     .put(url, headers)
     .then((res) => {
-      console.log(res)
+      alert('App e lista de matches resetados com sucesso, atualize a página para se divertir novamente!')
+      
     })
     .catch((err) => {
       console.log(err)
     })
+
   }
 
   return (
     <div>
       <GlobalStyle />
       {renderPage()}
-      <button onClick={clearApp}>Limpar</button>
     </div>
   );
 }

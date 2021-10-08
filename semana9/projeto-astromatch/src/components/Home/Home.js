@@ -47,26 +47,11 @@ function Home(props) {
             getProfileToChoose()
         })
         .catch((err) => {
-            console.log(err)
+            alert(err)
         })
 
         
     }
-
-    const cardProfile = (
-        <ContainerProfile>
-            <img src={profile.photo} alt={profile.name}/>
-            <Texto>
-                <Infos>
-                    <p><b>{profile.name}, </b></p>
-                    <p>{profile.age}</p>
-                </Infos>
-                <Bio>{profile.bio}</Bio>
-            </Texto>
-        </ContainerProfile>
-    )
-    
-    console.log(profile)
 
     return (
         <ContainerPage>
@@ -76,11 +61,28 @@ function Home(props) {
                     <button onClick={props.nextPage}>Matches</button>
                 </HeaderApp>
                 <ContainerProfileAndButtons>
-                    {cardProfile}
-                    <FooterApp>
-                        <button onClick={() => choosePerson(false)}>Não Curtir</button>
-                        <button onClick={() => choosePerson(true)}>Curtir</button>
-                    </FooterApp>
+                    {profile ? 
+                    <div>
+                        <ContainerProfile>
+                            <img src={profile.photo} alt={profile.name}/>
+                            <Texto>
+                                <Infos>
+                                    <p><b>{profile.name}, </b></p>
+                                    <p>{profile.age}</p>
+                                </Infos>
+                                <Bio>{profile.bio}</Bio>
+                            </Texto>
+                        </ContainerProfile>
+                        <FooterApp>
+                            <button onClick={() => choosePerson(false)}>Não Curtir</button>
+                            <button onClick={() => choosePerson(true)}>Curtir</button>
+                        </FooterApp> 
+                    </div> : 
+                    <div>
+                        <p>Não existe mais perfis! Vá para a seção de Matches, para ver quem te curtiu também!</p>
+                        <p>Se preferir você também pode resetar o app, para ter novas chances:</p>
+                        <button onClick={props.resetar}>Resetar</button>
+                    </div> }
                 </ContainerProfileAndButtons>
             </ContainerHome>
         </ContainerPage>
