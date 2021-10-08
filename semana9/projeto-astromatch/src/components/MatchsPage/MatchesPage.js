@@ -10,7 +10,7 @@ function Matches(props) {
 
     useEffect(() => {
         getMatches()
-    }, [])
+    }, [matches])
 
     const getMatches = () => {
         axios
@@ -34,6 +34,7 @@ function Matches(props) {
             </MatchesList>
         )
     })
+
     return (
         <div>
             <ContainerPage>
@@ -43,7 +44,7 @@ function Matches(props) {
                         <button onClick={props.backPage}>Home</button>
                     </HeaderApp>
                     <ContainerList>
-                        {matchesList}
+                        {matchesList.length > 0 ? matchesList : 'Você ainda não tem nenhum match, tente mais alguns perfis!'}
                     </ContainerList>
                 </ContainerMatches>
             </ContainerPage>

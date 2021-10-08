@@ -65,7 +65,7 @@ function Home(props) {
             </Texto>
         </ContainerProfile>
     )
-
+    
     console.log(profile)
 
     return (
