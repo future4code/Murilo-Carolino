@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ContainerPage, ContainerProfile, Infos, Texto, Bio, HeaderApp, FooterApp, ContainerHome, ContainerProfileAndButtons } from './styles'
+import { ContainerPage, ContainerProfile, Infos, Texto, Bio, HeaderApp, FooterApp, 
+        ContainerHome, ContainerProfileAndButtons, ButtonLike, ButtonDislike, MatchingImg } from './styles'
 import logo from '../../imgs/logo.png'
+import matching from '../../imgs/matching.png'
+
 
 const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/murilo-terenciani-maryam/person'
 const url1 = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/murilo-terenciani-maryam/choose-person'
@@ -58,11 +61,10 @@ function Home(props) {
             <ContainerHome>
                 <HeaderApp>
                     <img src={logo} alt="Logo do Aplicativo AstroMatch"/>
-                    <button onClick={props.nextPage}>Matches</button>
+                    <MatchingImg src={matching} onClick={props.nextPage}></MatchingImg>
                 </HeaderApp>
-                <ContainerProfileAndButtons>
                     {profile ? 
-                    <div>
+                    <ContainerProfileAndButtons>
                         <ContainerProfile>
                             <img src={profile.photo} alt={profile.name}/>
                             <Texto>
@@ -74,16 +76,15 @@ function Home(props) {
                             </Texto>
                         </ContainerProfile>
                         <FooterApp>
-                            <button onClick={() => choosePerson(false)}>Não Curtir</button>
-                            <button onClick={() => choosePerson(true)}>Curtir</button>
+                            <ButtonDislike onClick={() => choosePerson(false)}>X</ButtonDislike>
+                            <ButtonLike onClick={() => choosePerson(true)}>✔</ButtonLike>
                         </FooterApp> 
-                    </div> : 
-                    <div>
+                    </ContainerProfileAndButtons> : 
+                    <ContainerProfileAndButtons>
                         <p>Não existe mais perfis! Vá para a seção de Matches, para ver quem te curtiu também!</p>
                         <p>Se preferir você também pode resetar o app, para ter novas chances:</p>
                         <button onClick={props.resetar}>Resetar</button>
-                    </div> }
-                </ContainerProfileAndButtons>
+                    </ContainerProfileAndButtons> }
             </ContainerHome>
         </ContainerPage>
     )

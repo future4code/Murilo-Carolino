@@ -1,7 +1,9 @@
 import React, { useState, useEffect} from "react";
-import { ContainerPage, ContainerMatches, HeaderApp, ContainerList, MatchesList, PersonImage, PersonMatch } from './styles'
+import { ContainerPage, ContainerMatches, HeaderApp, ContainerList, MatchesList, PersonImage, PersonMatch, HomeImg, BrokenHeart, NoMatches } from './styles'
 import logo from '../../imgs/logo.png'
 import axios from "axios";
+import home from '../../imgs/home.svg'
+import heart from '../../imgs/broken-heart.png'
 
 const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/murilo-terenciani-maryam/matches'
 
@@ -40,10 +42,14 @@ function Matches(props) {
                 <ContainerMatches>
                     <HeaderApp>
                         <img src={logo} alt="Logo do Aplicativo AstroMatch"/>
-                        <button onClick={props.backPage}>Home</button>
+                        <HomeImg src={home} onClick={props.backPage} />
                     </HeaderApp>
                     <ContainerList>
-                        {matchesList.length > 0 ? matchesList : 'Você ainda não tem nenhum match, tente mais alguns perfis!'}
+                        {matchesList.length > 0 ? matchesList : 
+                        <NoMatches>
+                            <BrokenHeart src={heart}/>
+                            <p>Você ainda não tem nenhum match, tente mais alguns perfis!</p>
+                        </NoMatches>}
                     </ContainerList>
                 </ContainerMatches>
             </ContainerPage>
