@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
     background-image: url(${background});
     background-size: cover;
-    font-family: cursive;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
 `
