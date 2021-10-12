@@ -1,70 +1,14 @@
-# Getting Started with Create React App
+# Projeto LabeX
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Link do Wireframe
+https://wireframe.cc/pro/pp/5add19cfb481373
+[LabeX---Wireframe-cc-Premium.pdf](https://github.com/future4code/maryam-labe-ninja10/files/7325935/LabeX---Wireframe-cc-Premium.pdf)
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Prints do Wireframe
+![1-HomePage-2x](https://user-images.githubusercontent.com/84817937/136870235-4bc7b1a7-b44e-4549-bd26-d9a4408a0b76.png)
+![2-LoginPage-2x](https://user-images.githubusercontent.com/84817937/136870237-d962412e-1f57-431a-82a7-5ed0ac96167b.png)
+![3-AdminPage-2x](https://user-images.githubusercontent.com/84817937/136870238-f4c1b11d-09e7-4d38-a176-308014134ccc.png)
+![4-TripDetailsPage-2x](https://user-images.githubusercontent.com/84817937/136870239-4ec0fdb6-6536-4df5-ba0f-c650f36a1eca.png)
+![5-CreateTripPage-2x](https://user-images.githubusercontent.com/84817937/136870241-9ad2967e-aaf7-4ab4-82b9-caefabe89a95.png)
+![6-TripsPage-2x](https://user-images.githubusercontent.com/84817937/136870243-ffc0a3a8-f596-4ebd-a980-ea73571d1633.png)
+![7-ApplicationPage-2x](https://user-images.githubusercontent.com/84817937/136870244-734896a5-f455-4538-852e-f7d545c4d573.png)
