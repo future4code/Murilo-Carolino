@@ -19,7 +19,7 @@ function AdminPage() {
         .catch((err) => {
             console.log(err)
         })
-    })
+    }, [])
     
     const history = useHistory()
 
@@ -36,8 +36,8 @@ function AdminPage() {
         history.push("/")
     }
 
-    const goToTripDetailsPage = () => {
-        history.push("/admin/trips/:id")
+    const goToTripDetailsPage = (id) => {
+        history.push(`/admin/trips/${id}`)
     }
 
     return (
@@ -47,7 +47,7 @@ function AdminPage() {
                 {data.map((trip) => {
                     return (
                         <div key={trip.id}>
-                            <button onClick={goToTripDetailsPage}>
+                            <button onClick={() => goToTripDetailsPage(trip.id)}>
                                 {trip.name}
                             </button>
                             <button>X</button>
