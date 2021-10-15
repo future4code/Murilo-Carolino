@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import url from "../../constants/constants";
+import useProtectedPage from "../../hooks/useProtectedPage"
 
 function AdminPage() {
+
+    useProtectedPage()
 
     const [data, setData] = useState([])
     
@@ -25,7 +28,8 @@ function AdminPage() {
     }
 
     const goBack = () => {
-        history.goBack()
+        localStorage.removeItem('token')
+        history.push("/login")
     }
 
     const goToHomePage = () => {
@@ -42,7 +46,7 @@ function AdminPage() {
             <div>
                 {data.map((trip) => {
                     return (
-                        <div>
+                        <div key={trip.id}>
                             <button onClick={goToTripDetailsPage}>
                                 {trip.name}
                             </button>

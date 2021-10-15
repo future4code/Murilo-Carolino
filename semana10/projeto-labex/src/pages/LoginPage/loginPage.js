@@ -1,22 +1,27 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router";
 import url from "../../constants/constants"
+import useForm from "../../hooks/useForm";
 
 function LoginPage() {
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+
+        if (token !== null) {
+            history.push('/admin/trips/list')
+        }
+    })
+    
+    const { form, handleInput } = useForm({ email: "", password: ""})
 
     const history = useHistory()
 
-    const goToAdminPage = () => {
-        const body = {
-            email: email,
-            password: password
-        }
+    const goToAdminPage = (event) => {
+        event.preventDefault()
+        const body = form
 
-        console.log(email, password)
         axios
         .post(`${url}/login`, body)
         .then((res) => {
@@ -25,31 +30,25 @@ function LoginPage() {
             localStorage.setItem('token', res.data.token)
         })
         .catch((err) => {
+            alert(err.response.data.message)
             console.log("deu ruim:", err.response.data.message)
         })
     }
 
-    const goBack = () => {
-        history.goBack()
+    const goToHome = () => {
+        history.push("/")
     }
 
-    const handleEmail = (event) => {
-        setEmail(event.target.value)
-    }
-
-    const handlePassword = (event) => {
-        setPassword(event.target.value)
-    }
 
     return (
         <div>
             <h1>Login</h1>
-            <form>
-                <input type="email" value={email} placeholder="E-mail" onChange={handleEmail}/>
-                <input type="password" value={password} placeholder="Senha" onChange={handlePassword}/>
+            <form onSubmit={goToAdminPage}>
+                <input type="email" name={"email"} value={form.email} placeholder="E-mail" onChange={handleInput}/>
+                <input type="password" name={"password"} value={form.password} placeholder="Senha" onChange={handleInput}/>
+                <button>Sign in</button>
             </form>
-            <button onClick={goToAdminPage}>Sign in</button>
-            <button onClick={goBack}>Voltar para Home</button>
+            <button onClick={goToHome}>Voltar para Home</button>
         </div>
     )
 }

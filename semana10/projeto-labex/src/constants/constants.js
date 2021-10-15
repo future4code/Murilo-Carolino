@@ -1,4 +1,3 @@
-import React from "react";
 
 const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/murilo-terenciani-maryam'
 
