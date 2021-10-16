@@ -19,7 +19,7 @@ function AdminPage() {
         .catch((err) => {
             console.log(err)
         })
-    }, [])
+    }, [data])
     
     const history = useHistory()
 
@@ -40,6 +40,24 @@ function AdminPage() {
         history.push(`/admin/trips/${id}`)
     }
 
+    const deleteTrip = (id) => {
+        const headers = {
+            headers: {
+                auth: localStorage.getItem("token")
+            }
+        }
+
+        axios
+        .delete(`${url}/trips/${id}`, headers)
+        .then((res) => {
+            console.log(res)
+            alert("Viagem deletada!")
+        })
+        .catch((err) => {
+            console.log(err.response.data)
+        })
+    }
+
     return (
         <div>
             <h1>Página Administrativa</h1>
@@ -50,7 +68,7 @@ function AdminPage() {
                             <button onClick={() => goToTripDetailsPage(trip.id)}>
                                 {trip.name}
                             </button>
-                            <button>X</button>
+                            <button onClick={() => deleteTrip(trip.id)}>X</button>
                         </div>
                     ) 
                 })}
