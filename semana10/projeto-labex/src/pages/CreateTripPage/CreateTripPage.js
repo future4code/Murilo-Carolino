@@ -3,10 +3,12 @@ import React from "react";
 import { useHistory } from "react-router";
 import url from "../../constants/constants";
 import useForm from "../../hooks/useForm";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 
 function CreateTripPage() {
 
+    useProtectedPage()
     const history = useHistory()
     const { form, handleInput, cleanInputs } = useForm({
         name: "",
@@ -40,8 +42,6 @@ function CreateTripPage() {
             console.log(err.response.data.message)
         })
     }
-
-    console.log(form)
 
     return (
         <div>

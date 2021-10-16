@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import url from "../../constants/constants"
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 function TripDetailsPage() {
+
+    useProtectedPage()
     
     const params = useParams()
     const history = useHistory()
@@ -32,6 +35,26 @@ function TripDetailsPage() {
         history.goBack()
     }
 
+    const decideCandidate = (id, choice) =>{ 
+        const headers = {
+            headers: {
+                auth: localStorage.getItem("token")
+            }
+        }
+
+        const body = {
+            approve: choice
+        }
+
+        axios
+        .put(`${url}/trips/${tripDetails.id}/candidates/${id}/decide`, body, headers)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
 
     const details = 
         <div>
@@ -51,17 +74,16 @@ function TripDetailsPage() {
                 <p><b>Profissão:</b> {candidate.profession}</p>
                 <p><b>Texto de candidatura:</b> {candidate.applicationText}</p>
                 <div>
-                    <button>
+                    <button onClick={() => decideCandidate(candidate.id, true)}>
                         Aprovar
                     </button>
-                    <button>
+                    <button onClick={() => decideCandidate(candidate.id, false)}>
                         Reprovar
                     </button>
                 </div>
             </div>
         )
     })
-    console.log(tripDetails)
     
     return (
         <div>
