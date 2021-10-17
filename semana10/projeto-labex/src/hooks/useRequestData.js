@@ -9,11 +9,10 @@ const useRequestData = (url, initialState) => {
         axios
         .get(url)
         .then((res) => {
-            console.log(res.data.trips)
             setData(res.data.trips)
         })
         .catch((err) => {
-            console.log(err.response)
+            console.log(err.response.message)
         })
     }, [url])
 

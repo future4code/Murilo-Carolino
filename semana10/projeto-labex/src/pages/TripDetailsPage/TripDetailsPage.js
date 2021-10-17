@@ -29,7 +29,7 @@ function TripDetailsPage() {
         .catch((err) => {
             console.log(err)
         })
-    }, [ params.id, setTripDetails, setCandidates ])
+    }, [ candidates, tripDetails.approved ])
 
     const goBack = () => {
         history.goBack()
@@ -50,12 +50,17 @@ function TripDetailsPage() {
         .put(`${url}/trips/${tripDetails.id}/candidates/${id}/decide`, body, headers)
         .then((res) => {
             console.log(res)
+            if (choice === true) {
+                alert("Candidato aprovado!")
+            } else {
+                alert("O candidato foi reprovado")
+            }
         })
         .catch((err) => {
             console.log(err)
         })
     }
-
+    
     const details = 
         <div>
             <p><b>Nome:</b> {tripDetails.name}</p>
@@ -85,13 +90,22 @@ function TripDetailsPage() {
         )
     })
     
+    const approveds = tripDetails.approved && tripDetails.approved.map((candidate) => {
+        return (
+            <li key={candidate.id}>{candidate.name}</li>
+        )
+    })
+
+    
     return (
         <div>
             <h1>Detalhes da Viagem</h1>
-            {details}
+                {details}
             <button onClick={goBack}>Voltar para Admin</button>
             <h2>Candidatos Pendentes</h2>
-            {pendingCandidates}
+                {candidates.length === 0 ? "Não há candidatos para essa viagem" : pendingCandidates}
+            <h2>Candidatos Aprovados</h2>
+                {approveds && approveds.length > 0 ? approveds : "Não há candidatos aprovados"}
         </div>
     )
 }

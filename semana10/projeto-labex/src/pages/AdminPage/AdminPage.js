@@ -19,7 +19,7 @@ function AdminPage() {
         .catch((err) => {
             console.log(err)
         })
-    }, [data])
+    }, [])
     
     const history = useHistory()
 
@@ -57,7 +57,7 @@ function AdminPage() {
             console.log(err.response.data)
         })
     }
-
+    
     return (
         <div>
             <h1>Página Administrativa</h1>
