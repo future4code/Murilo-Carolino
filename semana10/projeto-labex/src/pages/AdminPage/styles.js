@@ -42,6 +42,11 @@ export const DataContainer = styled.div `
     box-shadow: 3px 3px 6px 1px rgb(49 175 180 / 50%);
     border-radius: 10px;
 
+    :hover {
+        background-color: #31afb4;
+        color: whitesmoke;
+    }
+
     p {
         width: 100%;
         height: 100%;
@@ -54,5 +59,10 @@ export const DataContainer = styled.div `
     img {
         height: 100%;
         cursor: crosshair;
+        transition: 500ms all;
+    }
+
+    img:hover {
+        transform: scale(1.1);
     }
 `
