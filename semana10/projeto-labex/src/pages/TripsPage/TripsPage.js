@@ -2,6 +2,8 @@ import React from "react";
 import { useHistory } from "react-router";
 import useRequestData from "../../hooks/useRequestData";
 import url from "../../constants/constants";
+import { TripsPageContainer, TripCardContainer, ComponentsTripContainer } from "./styles"
+import Header from "../../components/Header";
 
 
 function TripsPage() {
@@ -20,27 +22,27 @@ function TripsPage() {
 
     const TripsComponents = tripsList.map((trip) => {
         return (
-            <div key={trip.id}>
+            <TripCardContainer key={trip.id}>
                 <p><b>Nome:</b> {trip.name}</p>
                 <p><b>Descrição:</b> {trip.description}</p>
                 <p><b>Planeta:</b> {trip.planet}</p>
                 <p><b>Duração em dias:</b> {trip.durationInDays}</p>
                 <p><b>Data:</b> {trip.date}</p>
-            </div>
+            </TripCardContainer>
         )
     })
     return (
         <div>
-            <h1>Página de viagens</h1>
-            <button onClick={goToHomePage}>
-                Voltar para Home
-            </button>
-            <button onClick={goToApplicationPage}>
-                Inscrever-se
-            </button>
-            <div>
-                {TripsComponents}
-            </div>
+            <Header goToHomePage={goToHomePage} goBack={goToHomePage}/>
+            <TripsPageContainer>
+                <button onClick={goToApplicationPage}>
+                    Inscrever-se
+                </button>
+                <h1>Lista de Viagens</h1>
+                <ComponentsTripContainer>
+                    {TripsComponents}
+                </ComponentsTripContainer>
+            </TripsPageContainer>
         </div>
     )
 }

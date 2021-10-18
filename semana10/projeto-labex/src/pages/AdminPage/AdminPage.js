@@ -2,7 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import url from "../../constants/constants";
-import useProtectedPage from "../../hooks/useProtectedPage"
+import useProtectedPage from "../../hooks/useProtectedPage";
+import Header from "../../components/Header";
+import { AdminPageContainer, NavContainer, PanelAdminContainer, DataContainer } from "./styles"
+import DeleteIcon from "../../imgs/icondelete.png"
 
 function AdminPage() {
 
@@ -60,22 +63,27 @@ function AdminPage() {
     
     return (
         <div>
-            <h1>Página Administrativa</h1>
-            <div>
-                {data.map((trip) => {
-                    return (
-                        <div key={trip.id}>
-                            <button onClick={() => goToTripDetailsPage(trip.id)}>
-                                {trip.name}
-                            </button>
-                            <button onClick={() => deleteTrip(trip.id)}>X</button>
-                        </div>
-                    ) 
-                })}
-            </div> <br></br>
-            <button onClick={goToCreateTripPage}>Criar Viagem</button>
-            <button onClick={goBack}>Logout</button>
-            <button onClick={goToHomePage}>Voltar para Home</button>
+            <Header goToHomePage={goToHomePage} goBack={goToHomePage}/>
+            <AdminPageContainer>
+                <NavContainer>
+                    <button onClick={goToCreateTripPage}>Criar Viagem</button>
+                    <button onClick={goBack}>Logout</button>
+                    <button onClick={goToHomePage}>Voltar para Home</button>
+                </NavContainer>
+                <PanelAdminContainer>
+                    <h1>Seção Administrativa</h1>
+                    {data.map((trip) => {
+                        return (
+                            <DataContainer key={trip.id}>
+                                <p onClick={() => goToTripDetailsPage(trip.id)}>
+                                    {trip.name}
+                                </p>
+                                <img src={DeleteIcon} onClick={() => deleteTrip(trip.id)}/>
+                            </DataContainer>
+                        ) 
+                    })}
+                </PanelAdminContainer>
+            </AdminPageContainer>
         </div>
     )
 }

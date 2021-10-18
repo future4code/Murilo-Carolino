@@ -4,6 +4,8 @@ import useForm from "../../hooks/useForm";
 import useRequestData from "../../hooks/useRequestData";
 import url from "../../constants/constants";
 import axios from "axios";
+import Header from "../../components/Header"
+import { ApplicationPageContainer, ApplicationContainer, FormContainer } from "./styles"
 
 function ApplicationPage() {
 
@@ -43,10 +45,17 @@ function ApplicationPage() {
         history.goBack()
     }
 
+    const goToHomePage = () => {
+        history.push("/")
+    }
+
     return (
         <div>
+            <Header goBack={goBack} goToHomePage={goToHomePage}/>
+            <ApplicationPageContainer>
+            <ApplicationContainer>
             <h1>Formulário de Inscrição</h1>
-            <form onSubmit={applyToTrip}>
+            <FormContainer onSubmit={applyToTrip}>
                 <select name={"tripId"} defaultValue={""} onChange={handleInput} required>
                     <option value="" disabled>Escolha uma Viagem</option>
                     {tripsList.map((trip) => {
@@ -313,10 +322,9 @@ function ApplicationPage() {
                     <option value="Zâmbia">Zâmbia</option>
                 </select>
                 <button>Enviar</button>
-            </form>
-            <button onClick={goBack}>
-                Voltar para Lista
-            </button>
+            </FormContainer>
+            </ApplicationContainer>
+            </ApplicationPageContainer>
         </div>
     )
 }

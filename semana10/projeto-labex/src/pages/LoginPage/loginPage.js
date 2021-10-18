@@ -3,9 +3,11 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router";
 import url from "../../constants/constants"
 import useForm from "../../hooks/useForm";
+import Header from "../../components/Header";
+import { LoginPageContainer, LoginContainer, FormContainer } from "./styles"
 
 function LoginPage() {
-
+    
     useEffect(() => {
         const token = localStorage.getItem("token")
 
@@ -42,13 +44,18 @@ function LoginPage() {
 
     return (
         <div>
+            <Header />
+            <LoginPageContainer>
+            <LoginContainer>
             <h1>Login</h1>
-            <form onSubmit={goToAdminPage}>
+            <FormContainer onSubmit={goToAdminPage}>
                 <input type="email" name={"email"} value={form.email} placeholder="E-mail" onChange={handleInput}/>
                 <input type="password" name={"password"} value={form.password} placeholder="Senha" onChange={handleInput}/>
                 <button>Sign in</button>
-            </form>
+            </FormContainer>
+            </LoginContainer>
             <button onClick={goToHome}>Voltar para Home</button>
+            </LoginPageContainer>
         </div>
     )
 }

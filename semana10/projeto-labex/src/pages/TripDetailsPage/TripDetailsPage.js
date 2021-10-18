@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import url from "../../constants/constants"
 import useProtectedPage from "../../hooks/useProtectedPage";
+import Header from "../../components/Header"
+import { TripDetailsPageContainer, TripDetailsCard, CandidatesContainer, CandidateCard, ApprovedCandidatesContainer, ApprovedList } from "./styles"
 
 function TripDetailsPage() {
 
@@ -33,6 +35,10 @@ function TripDetailsPage() {
 
     const goBack = () => {
         history.goBack()
+    }
+
+    const goToHomePage = () => {
+        history.push("/")
     }
 
     const decideCandidate = (id, choice) =>{ 
@@ -72,7 +78,7 @@ function TripDetailsPage() {
 
     const pendingCandidates = candidates.map((candidate) => {
         return (
-            <div key={candidate.id}>
+            <CandidateCard key={candidate.id}>
                 <p><b>Nome:</b> {candidate.name}</p>
                 <p><b>Idade:</b> {candidate.age}</p>
                 <p><b>País:</b> {candidate.country}</p>
@@ -86,26 +92,38 @@ function TripDetailsPage() {
                         Reprovar
                     </button>
                 </div>
-            </div>
+            </CandidateCard>
         )
     })
     
     const approveds = tripDetails.approved && tripDetails.approved.map((candidate) => {
         return (
-            <li key={candidate.id}>{candidate.name}</li>
+            <ApprovedList key={candidate.id}>{candidate.name}</ApprovedList>
         )
     })
 
     
     return (
         <div>
-            <h1>Detalhes da Viagem</h1>
-                {details}
-            <button onClick={goBack}>Voltar para Admin</button>
-            <h2>Candidatos Pendentes</h2>
-                {candidates.length === 0 ? "Não há candidatos para essa viagem" : pendingCandidates}
-            <h2>Candidatos Aprovados</h2>
-                {approveds && approveds.length > 0 ? approveds : "Não há candidatos aprovados"}
+            <Header goToHomePage={goToHomePage} goBack={goBack}/>
+            <TripDetailsPageContainer>
+                <TripDetailsCard>
+                    <h1>Detalhes da Viagem</h1>
+                        {details}
+                </TripDetailsCard>
+                <div>
+                    <h2>Candidatos Pendentes</h2>
+                    <CandidatesContainer>
+                        {candidates.length === 0 ? "Não há candidatos para essa viagem" : pendingCandidates}
+                    </CandidatesContainer>
+                </div>
+                <div>
+                    <h2>Candidatos Aprovados</h2>
+                    <ApprovedCandidatesContainer>
+                        {approveds && approveds.length > 0 ? approveds : "Não há candidatos aprovados"}
+                    </ApprovedCandidatesContainer>
+                </div>
+            </TripDetailsPageContainer>
         </div>
     )
 }

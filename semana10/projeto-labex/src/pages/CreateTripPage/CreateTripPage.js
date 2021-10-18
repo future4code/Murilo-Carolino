@@ -4,6 +4,8 @@ import { useHistory } from "react-router";
 import url from "../../constants/constants";
 import useForm from "../../hooks/useForm";
 import useProtectedPage from "../../hooks/useProtectedPage";
+import Header from "../../components/Header";
+import { CreateTripPageContainer, CreateContainer, FormContainer } from "./styles"
 
 
 function CreateTripPage() {
@@ -20,6 +22,10 @@ function CreateTripPage() {
 
     const goBack = () => {
         history.goBack()
+    }
+
+    const goToHomePage = () => {
+        history.push("/")
     }
 
     const createTrip = (event) => {
@@ -45,27 +51,31 @@ function CreateTripPage() {
 
     return (
         <div>
-            <h1>Formulário de criar Viagens</h1>
-            <form onSubmit={createTrip}>
-                <input type="text" name={"name"} value={form.name} placeholder="Título da viagem" onChange={handleInput}/>
-                <select name={"planet"} defaultValue={""} onChange={handleInput}>
-                    <option value={""} disabled>Escolha um Planeta</option>
-                    <option value={"Mercúrio"}>Mercúrio</option>
-                    <option value={"Vênus"}>Vênus</option>
-                    <option value={"Terra"}>Terra</option>
-                    <option value={"Marte"}>Marte</option>
-                    <option value={"Júpiter"}>Júpiter</option>
-                    <option value={"Saturno"}>Saturno</option>
-                    <option value={"Urano"}>Urano</option>
-                    <option value={"Netuno"}>Netuno</option>
-                    <option value={"Plutão"}>Plutão</option>
-                </select>
-                <input type="date" name={"date"} value={form.date} placeholder="Data" onChange={handleInput}/>
-                <input type="text" name={"description"} value={form.description} placeholder="Descrição da viagem" onChange={handleInput}/>
-                <input type="number" name={"durationInDays"} value={form.durationInDays} placeholder="Duração em dias" onChange={handleInput}/>
-                <button>Criar</button>
-            </form>
-            <button onClick={goBack}>Voltar para Admin</button>
+            <Header goToHomePage={goToHomePage} goBack={goBack}/>
+            <CreateTripPageContainer>
+                <CreateContainer>
+                <h1>Formulário de criar Viagens</h1>
+                <FormContainer onSubmit={createTrip}>
+                    <input type="text" name={"name"} value={form.name} placeholder="Título da viagem" onChange={handleInput}/>
+                    <select name={"planet"} defaultValue={""} onChange={handleInput}>
+                        <option value={""} disabled>Escolha um Planeta</option>
+                        <option value={"Mercúrio"}>Mercúrio</option>
+                        <option value={"Vênus"}>Vênus</option>
+                        <option value={"Terra"}>Terra</option>
+                        <option value={"Marte"}>Marte</option>
+                        <option value={"Júpiter"}>Júpiter</option>
+                        <option value={"Saturno"}>Saturno</option>
+                        <option value={"Urano"}>Urano</option>
+                        <option value={"Netuno"}>Netuno</option>
+                        <option value={"Plutão"}>Plutão</option>
+                    </select>
+                    <input type="date" name={"date"} value={form.date} placeholder="Data" onChange={handleInput}/>
+                    <input type="text" name={"description"} value={form.description} placeholder="Descrição da viagem" onChange={handleInput}/>
+                    <input type="number" name={"durationInDays"} value={form.durationInDays} placeholder="Duração em dias" onChange={handleInput}/>
+                    <button>Criar</button>
+                </FormContainer>
+                </CreateContainer>
+            </CreateTripPageContainer>
         </div>
     )
 }

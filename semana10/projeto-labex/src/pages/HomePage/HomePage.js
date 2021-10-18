@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
-
+import { HomeContainer, ButtonsContainer, Container } from "./styles"
+import logo from "../../imgs/backlogo.png"
 
 function HomePage() {
 
@@ -15,15 +16,20 @@ function HomePage() {
     }
 
     return (
-        <div>
-            <h1>Página Inicial</h1>
-            <button onClick={goToTripsPage}>
-                Acessar Viagens
-            </button>
-            <button onClick={goToLoginPage}>
-                Área de Admin
-            </button>
-        </div>
+        <HomeContainer>
+            <Container>
+                <img src={logo} />
+                <h2>Embarque nessa aventura, para o infinito e mais além...</h2>
+                <ButtonsContainer>
+                    <button onClick={goToTripsPage}>
+                        Acessar Viagens
+                    </button>
+                    <button onClick={goToLoginPage}>
+                        Área de Admin
+                    </button>
+                </ButtonsContainer>
+            </Container>
+        </HomeContainer>
     )
 }
 
