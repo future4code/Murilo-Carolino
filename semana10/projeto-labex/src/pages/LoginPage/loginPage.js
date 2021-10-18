@@ -44,7 +44,7 @@ function LoginPage() {
 
     return (
         <div>
-            <Header />
+            <Header goBack={goToHome} goToHomePage={goToHome}/>
             <LoginPageContainer>
             <LoginContainer>
             <h1>Login</h1>
@@ -54,7 +54,6 @@ function LoginPage() {
                 <button>Sign in</button>
             </FormContainer>
             </LoginContainer>
-            <button onClick={goToHome}>Voltar para Home</button>
             </LoginPageContainer>
         </div>
     )
