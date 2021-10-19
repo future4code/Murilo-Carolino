@@ -56,8 +56,8 @@ function CreateTripPage() {
                 <CreateContainer>
                 <h1>Formulário de criar Viagens</h1>
                 <FormContainer onSubmit={createTrip}>
-                    <input type="text" name={"name"} value={form.name} placeholder="Título da viagem" onChange={handleInput}/>
-                    <select name={"planet"} defaultValue={""} onChange={handleInput}>
+                    <input type="text" name={"name"} value={form.name} placeholder="Título da viagem" onChange={handleInput} required pattern={"^.{5,}"} title={"O nome deve ter no mínimo 5 letras."}/>
+                    <select name={"planet"} defaultValue={""} onChange={handleInput} required>
                         <option value={""} disabled>Escolha um Planeta</option>
                         <option value={"Mercúrio"}>Mercúrio</option>
                         <option value={"Vênus"}>Vênus</option>
@@ -69,9 +69,9 @@ function CreateTripPage() {
                         <option value={"Netuno"}>Netuno</option>
                         <option value={"Plutão"}>Plutão</option>
                     </select>
-                    <input type="date" name={"date"} value={form.date} placeholder="Data" onChange={handleInput}/>
-                    <input type="text" name={"description"} value={form.description} placeholder="Descrição da viagem" onChange={handleInput}/>
-                    <input type="number" name={"durationInDays"} value={form.durationInDays} placeholder="Duração em dias" onChange={handleInput}/>
+                    <input type="date" name={"date"} value={form.date} placeholder="Data" onChange={handleInput} required/>
+                    <input type="text" name={"description"} value={form.description} placeholder="Descrição da viagem" onChange={handleInput} required pattern={"^.{30,}"} title={"A descrição deve ter no mínimo 30 caracteres."}/>
+                    <input type="number" name={"durationInDays"} value={form.durationInDays} placeholder="Duração em dias" onChange={handleInput} required min={50}/>
                     <button>Criar</button>
                 </FormContainer>
                 </CreateContainer>

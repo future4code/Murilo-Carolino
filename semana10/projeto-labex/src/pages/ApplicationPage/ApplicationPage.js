@@ -64,10 +64,10 @@ function ApplicationPage() {
                         )
                     })}
                 </select>
-                <input type="text" name={"name"} value={form.name} placeholder="Seu Nome" onChange={handleInput} required/>
-                <input type="number" name={"age"} value={form.age} placeholder="Sua Idade" onChange={handleInput} required/>
-                <input type="text" name={"applicationText"} value={form.applicationText} placeholder="Texto de Candidatura" onChange={handleInput} required/>
-                <input type="text" name={"profession"} value={form.profession} placeholder="Profissão" onChange={handleInput} required/>
+                <input type="text" name={"name"} value={form.name} placeholder="Seu Nome" onChange={handleInput} required pattern={"^.{3,}"} title={"O nome deve ter no mínimo 3 letras."}/>
+                <input type="number" name={"age"} value={form.age} placeholder="Sua Idade" onChange={handleInput} required min={18}/>
+                <input type="text" name={"applicationText"} value={form.applicationText} placeholder="Texto de Candidatura" onChange={handleInput} required pattern={"^.{30,}"} title={"O texto deve ter no mínimo 30 caracteres."}/>
+                <input type="text" name={"profession"} value={form.profession} placeholder="Profissão" onChange={handleInput} pattern={"^.{3,}"} title={"Profissão precisa de no mínimo 3 caracteres."} required/>
                 <select name={"country"} defaultValue={""} onChange={handleInput} required>
                     <option value="" disabled>Escolha um País</option>
                     <option value="Brasil">Brasil</option>

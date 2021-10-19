@@ -49,8 +49,8 @@ function LoginPage() {
             <LoginContainer>
             <h1>Login</h1>
             <FormContainer onSubmit={goToAdminPage}>
-                <input type="email" name={"email"} value={form.email} placeholder="E-mail" onChange={handleInput}/>
-                <input type="password" name={"password"} value={form.password} placeholder="Senha" onChange={handleInput}/>
+                <input type="email" name={"email"} value={form.email} placeholder="E-mail" onChange={handleInput} required/>
+                <input type="password" name={"password"} value={form.password} placeholder="Senha" onChange={handleInput} pattern={"^.{3,}"} title={"Sua senha deve ter no mínimo 3 caracteres."} required/>
                 <button>Sign in</button>
             </FormContainer>
             </LoginContainer>
