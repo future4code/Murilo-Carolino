@@ -12,15 +12,19 @@ function AdminPage() {
     useProtectedPage()
 
     const [data, setData] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
     
     useEffect(() => {
+        setIsLoading(true)
         axios
         .get(`${url}/trips`)
         .then((res) => {
             setData(res.data.trips)
+            setIsLoading(false)
         })
         .catch((err) => {
             console.log(err)
+            setIsLoading(false)
         })
     }, [])
     
@@ -61,6 +65,7 @@ function AdminPage() {
         })
     }
     
+    
     return (
         <div>
             <Header goToHomePage={goToHomePage} goBack={goToHomePage}/>
@@ -72,6 +77,7 @@ function AdminPage() {
                 </NavContainer>
                 <PanelAdminContainer>
                     <h1>Seção Administrativa</h1>
+                    {isLoading && <h3>Carregando...</h3>}
                     {data.map((trip) => {
                         return (
                             <DataContainer key={trip.id}>

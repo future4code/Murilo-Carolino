@@ -8,7 +8,7 @@ import Header from "../../components/Header";
 
 function TripsPage() {
     
-    const tripsList = useRequestData(`${url}/trips`, [])
+    const [tripsList, isLoadingTrips] = useRequestData(`${url}/trips`, [])
 
     const history = useHistory()
 
@@ -39,8 +39,9 @@ function TripsPage() {
                     Inscrever-se
                 </button>
                 <h1>Lista de Viagens</h1>
+                {isLoadingTrips && <h3>Carregando...</h3>}
                 <ComponentsTripContainer>
-                    {TripsComponents}
+                    {TripsComponents.length === 0 ? <p>Não há nenhuma viagem programada.</p> : TripsComponents}
                 </ComponentsTripContainer>
             </TripsPageContainer>
         </div>
