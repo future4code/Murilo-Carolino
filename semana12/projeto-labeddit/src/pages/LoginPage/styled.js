@@ -20,6 +20,10 @@ export const InputsContainer = styled.div `
     max-width: 500px;
     align-items: center;
     margin-bottom: 15px;
+
+    Button {
+        margin-top: 10px
+    }
 `
 
 export const SignUpContainer = styled.div `
