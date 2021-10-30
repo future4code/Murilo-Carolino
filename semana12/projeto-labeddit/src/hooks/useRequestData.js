@@ -18,7 +18,8 @@ const useRequestData = (initialData, url) => {
             setData(res.data)
         })
         .catch((err) => {
-            alert("Algo deu errado, atualize a página!")
+            alert("Você não tem permissão para acessar essa seção!")
+            console.log(err.response)
         })
     }, [url, data])
 

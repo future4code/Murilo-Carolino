@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useParams } from "react-router";
 import CommentCard from "../../components/CommentCard/CommentCard";
@@ -29,20 +30,59 @@ function PostDetailsPage() {
     
     const postDetails = useRequestData([], `${baseURL}/posts/${params.id}/comments`)
     
+    const handleCommentVote = (commentId, direction) => {
+        const headers = {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        }
+
+        const body = {
+            direction: direction
+        }
+        if (direction === 1){
+            axios
+            .post(`${baseURL}/comments/${commentId}/votes`, body, headers)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
+        } else if (direction === -1) {
+            axios
+            .put(`${baseURL}/comments/${commentId}/votes`, body, headers)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
+        } else {
+            axios
+            .delete(`${baseURL}/comments/${commentId}/votes`, headers)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
+        }
+    }
+
     const postComments = postDetails.map((comment) => {
         return (
             <CommentCard 
                 key={comment.id}
                 username={comment.username}
                 body={comment.body}
+                voteSum={comment.voteSum}
+                id={comment.id}
                 userVote={comment.userVote}
+                handleCommentVote={handleCommentVote}
             />
         )
     })
-    
-    const handleCommentVote = () => {
-        
-    }
     
     return (
         <ScreenContainer>
