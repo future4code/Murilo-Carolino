@@ -2,45 +2,45 @@ import { Button, CircularProgress, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styled"
-import { login } from "../../services/users"
-import { useHistory } from "react-router";
+import { createPost } from "../../services/posts";
 
 
-function LoginForm({setRightButtonText}) {
+function PostForm() {
 
     const [form, handleInputChange, clear] = useForm({
-        email: "",
-        password: ""
+        title: "",
+        body: ""
     })
     const [isLoading, setIsLoading] = useState(false)
-    const history = useHistory()
+
 
     const onSubmitForm = (event) => {
         event.preventDefault()
-        login(form, clear, history, setRightButtonText, setIsLoading)
+        createPost(form, clear, setIsLoading)
     }
 
     return (
         <InputsContainer>
             <form onSubmit={onSubmitForm}>
                 <TextField 
-                    name={"email"}
-                    value={form.email}
+                    name={"title"}
+                    value={form.title}
                     onChange={handleInputChange}
-                    label={"E-mail"}
+                    label={"Título"}
                     fullWidth
                     margin={"normal"}
-                    type={"email"}
+                    type={"text"}
                     required
+                    autoFocus
                 />
                 <TextField 
-                    name={"password"}
-                    value={form.password}
+                    name={"body"}
+                    value={form.body}
                     onChange={handleInputChange}
-                    label={"Senha"}
+                    label={"Descrição"}
                     fullWidth
                     margin={"normal"}
-                    type={"password"}
+                    type={"text"}
                     required
                 />
                 <Button
@@ -48,11 +48,11 @@ function LoginForm({setRightButtonText}) {
                     type={"submit"}
                     fullWidth
                 >
-                    {isLoading ? <CircularProgress size={24} color={"secondary"} thickness={4}/> : "Fazer Login"}
+                    {isLoading ? <CircularProgress size={24} color={"secondary"} thickness={4}/> : "Criar Post"}
                 </Button>
             </form>
         </InputsContainer>
     )
 }
 
-export default LoginForm
+export default PostForm

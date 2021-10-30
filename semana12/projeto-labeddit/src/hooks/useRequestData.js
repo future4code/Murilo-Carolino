@@ -20,7 +20,7 @@ const useRequestData = (initialData, url) => {
         .catch((err) => {
             alert("Algo deu errado, atualize a página!")
         })
-    }, [url])
+    }, [url, data])
 
     return data
 }

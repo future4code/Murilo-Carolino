@@ -16,6 +16,9 @@ export default function PostCard(props) {
                         <Typography gutterBottom variant="h5" component="div">
                             {props.username}
                         </Typography>
+                        <Typography variant="subtitle2" color="text.secondary">
+                            {props.title}
+                        </Typography>
                         <Typography variant="body2" color="text.secondary">
                             {props.body}
                         </Typography>

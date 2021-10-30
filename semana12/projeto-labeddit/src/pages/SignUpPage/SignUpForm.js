@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, TextField } from "@material-ui/core";
+import React, { useState } from "react";
+import { Button, TextField, CircularProgress } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styled"
 import { signUp } from "../../services/users";
@@ -13,10 +13,11 @@ function SignUpForm({setRightButtonText}) {
         email: "",
         password: ""
     })
+    const [isLoading, setIsLoading] = useState(false)
 
     const onSubmitForm = (event) => {
         event.preventDefault()
-        signUp(form, clear, history, setRightButtonText)
+        signUp(form, clear, history, setRightButtonText, setIsLoading)
     }
 
     return (
@@ -57,7 +58,7 @@ function SignUpForm({setRightButtonText}) {
                     type={"submit"}
                     fullWidth
                 >
-                    Cadastrar
+                    {isLoading ? <CircularProgress size={24} color={"secondary"} thickness={4}/> : "Cadastrar"}
                 </Button>
             </form>
         </InputsContainer>
