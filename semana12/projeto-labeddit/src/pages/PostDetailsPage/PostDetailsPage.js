@@ -35,9 +35,14 @@ function PostDetailsPage() {
                 key={comment.id}
                 username={comment.username}
                 body={comment.body}
+                userVote={comment.userVote}
             />
         )
     })
+    
+    const handleCommentVote = () => {
+        
+    }
     
     return (
         <ScreenContainer>

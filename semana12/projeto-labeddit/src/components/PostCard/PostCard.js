@@ -1,17 +1,18 @@
 import React from 'react';
-import { Card } from '@material-ui/core';
+import { Card, IconButton } from '@material-ui/core';
 import { CardContent } from '@material-ui/core';
 import { CardMedia } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { Button, CardActionArea, CardActions } from '@material-ui/core';
 import { CardContainer } from './styled';
+import { ArrowDownward, ArrowUpward, Comment } from '@material-ui/icons';
 
 
 export default function PostCard(props) {
     return (
-        <CardContainer onClick={props.onClick}>
+        <CardContainer>
             <Card sx={{ maxWidth: 500, width: 90/100}} >
-                <CardActionArea>
+                <CardActionArea onClick={props.onClick}>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             {props.username}
@@ -24,11 +25,17 @@ export default function PostCard(props) {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                <CardActions>
-                    <Button size="small" color="primary">
-                        Share
-                    </Button>
-                    <Button>
+                <CardActions disableSpacing>
+                    <IconButton>
+                        <ArrowUpward />
+                    </IconButton>
+                    <Typography variant={"overline"}>
+                        {props.voteSum}
+                    </Typography>
+                    <IconButton>
+                        <ArrowDownward />
+                    </IconButton>
+                    <Button startIcon={<Comment />}>
                         Comentários
                     </Button>
                 </CardActions>

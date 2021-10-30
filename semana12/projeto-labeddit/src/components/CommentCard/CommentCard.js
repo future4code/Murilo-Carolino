@@ -1,11 +1,12 @@
 import React from 'react';
 import { Box } from '@material-ui/system';
-import { Card } from '@material-ui/core';
+import { Card, IconButton } from '@material-ui/core';
 import { CardActions } from '@material-ui/core';
 import { CardContent } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { CardContainer } from './styled';
+import { ArrowDownward, ArrowUpward } from '@material-ui/icons';
 
 export default function CommentCard(props) {
     return (
@@ -19,8 +20,16 @@ export default function CommentCard(props) {
                         {props.body}
                     </Typography>
                 </CardContent>
-                <CardActions>
-                    <Button size="small">Learn More</Button>
+                <CardActions disableSpacing>
+                    <IconButton>
+                        <ArrowUpward />
+                    </IconButton>
+                    <Typography variant={"overline"}>
+                        {props.userVote}
+                    </Typography>
+                    <IconButton>
+                        <ArrowDownward />
+                    </IconButton>
                 </CardActions>
             </Card>
         </CardContainer>

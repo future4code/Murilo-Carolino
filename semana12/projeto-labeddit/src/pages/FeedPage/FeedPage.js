@@ -26,6 +26,7 @@ function FeedPage() {
                 username={post.username}
                 title={post.title}
                 body={post.body}
+                voteSum={post.voteSum}
                 onClick={() => onClickCard(post)}
             />
         )
