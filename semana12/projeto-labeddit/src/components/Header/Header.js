@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
 import { AppBar } from '@material-ui/core';
 import { Box } from '@material-ui/system';
-import { Toolbar } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { StyledToolbar } from "./styled"
 import { goToFeed, goToLogin } from '../../routes/coordinator';

@@ -20,9 +20,14 @@ export const InputsContainer = styled.div `
     max-width: 500px;
     align-items: center;
     margin-bottom: 15px;
+    
 
     Button {
-        margin-top: 10px
+        margin-top: 10px;
+    }
+
+    input {
+        background-color: white;
     }
 `
 

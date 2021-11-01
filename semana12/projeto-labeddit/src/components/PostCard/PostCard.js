@@ -1,10 +1,9 @@
 import React from 'react';
 import { Card, IconButton } from '@material-ui/core';
 import { CardContent } from '@material-ui/core';
-import { CardMedia } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { Button, CardActionArea, CardActions } from '@material-ui/core';
-import { CardContainer, CommentsContainer } from './styled';
+import { CardContainer, CommentsContainer, StyledCardActions } from './styled';
 import { ArrowDownward, ArrowUpward, Comment } from '@material-ui/icons';
 
 
@@ -41,7 +40,7 @@ export default function PostCard(props) {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                <CardActions disableSpacing>
+                <StyledCardActions disableSpacing>
                     <div>
                         <IconButton onClick={handleUpVote}>
                             <ArrowUpward color={props.userVote === 1 ? "primary" : "inherit"}/>
@@ -61,7 +60,7 @@ export default function PostCard(props) {
                             Comentários
                         </Button>
                     </CommentsContainer>
-                </CardActions>
+                </StyledCardActions>
             </Card>
         </CardContainer>
     );

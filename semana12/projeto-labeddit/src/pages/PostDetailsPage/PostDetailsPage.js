@@ -14,6 +14,49 @@ function PostDetailsPage() {
     useProtectedPage()
     const params = useParams()
     const getPost = useRequestData([], `${baseURL}/posts`)
+
+    const handlePostVote = (postId, direction) => {
+        const headers = {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        }
+        
+        const body = {
+            direction: direction
+        }
+        if (direction === 1){
+            axios
+            .post(`${baseURL}/posts/${postId}/votes`, body, headers)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
+        } else if (direction === -1) {
+            axios
+            .put(`${baseURL}/posts/${postId}/votes`, body, headers)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
+        } else {
+            axios
+            .delete(`${baseURL}/posts/${postId}/votes`, headers)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
+        }
+    }
+
+
+
     const post = getPost.map((post) => {
         if (post.id === params.id) {
             return (
@@ -22,6 +65,11 @@ function PostDetailsPage() {
                     username={post.username}
                     title={post.title}
                     body={post.body}
+                    voteSum={post.voteSum}
+                    userVote={post.userVote}
+                    id={post.id}
+                    commentCount={post.commentCount}
+                    handlePostVote={handlePostVote}
                 />
             )
         }

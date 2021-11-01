@@ -1,9 +1,7 @@
 import React from 'react';
-import { Box } from '@material-ui/system';
 import { Card, IconButton } from '@material-ui/core';
 import { CardActions } from '@material-ui/core';
 import { CardContent } from '@material-ui/core';
-import { Button } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { CardContainer } from './styled';
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons';

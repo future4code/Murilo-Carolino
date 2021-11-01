@@ -24,4 +24,8 @@ export const InputsContainer = styled.div `
     Button {
         margin-top: 10px
     }
+
+    input {
+        background-color: white;
+    }
 `
