@@ -1,0 +1,6 @@
+export const primaryColor = '#f77f00'
+export const secondaryColor = '#004d7a'
+export const errorColor = '#d62828'
+export const infoColor = '#2196f3'
+export const dividerColor = '#fcbf49'
+export const backgroundColor = '#e8e7e1'
