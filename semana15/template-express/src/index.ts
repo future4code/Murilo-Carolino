@@ -88,52 +88,107 @@ app.get("/countries/:id", (req: Request, res: Response) => {
 // Endpoint 4 - Editar País (confused)
 app.put("/countries/:id", (req: Request, res: Response) => {
     const id = req.params.id
+    let errorCode: number = 400
     
-    let result: country | undefined = countries.find((country) => {
-        return country.id === Number(id)
-    })
+    try {
+        const countryIndex: number = countries.findIndex((country) => {
+            return country.id === Number(id)
+        })
 
-    if (result) {
-        req.body.name = "Brazilzil"
-        let editResult = {...result, name: req.body.name}
+        if (countryIndex === -1) {
+            errorCode = 404
+            throw new Error()
+        }
+
+        if (!req.body.name && !req.body.capital) {
+            throw new Error("Parâmetro inválido.")
+        }
+
+        if (req.body.name) {
+            countries[countryIndex].name = req.body.name
+        }
+        if (req.body.capital) {
+            countries[countryIndex].capital = req.body.capital
+        }
+
         res
         .status(200)
-        .send(editResult)
-    } else {
-        res
-        .status(404)
-        .send("País não encontrado!")
+        .send("Atualização com sucesso de país.")
+
+    } catch (error: any) {
+        console.log(error)
+        res.status(errorCode).send(error.message)
     }
 })
 
 // Endpoint 5 - Deletar País 
 app.delete("countries/:id", async (req: Request, res: Response) => {
+    let errorCode: number = 400
+
     try {
         
-        const token = req.headers.authorization
-        if (!token) {
-            res.statusCode = 401
-            throw new Error()
+        const authorization = req.headers.authorization
+        if (!authorization || authorization.length < 10) {
+            errorCode = 401
+            throw new Error("Não autorizado.")
         }
 
-        const index = countries.findIndex((country) => {
+        const index: number = countries.findIndex((country) => {
             return country.id === Number(req.params.id)
         })
 
         if (index === -1) {
-            res.statusCode = 404
+            errorCode = 404
             throw new Error()
         }
 
         countries.splice(index, 1)
 
-        res.status(204).end()
+        res.status(200).send("País deletado com sucesso.")
 
     } catch (error: any) {
-        if (res.statusCode === 200) {
-            res.status(500).end()
-        } else {
-            res.end()
+        console.log(error)
+        res.status(errorCode).send(error.message)
+    }
+})
+
+// Endpoint 6 - Criando País
+app.post("/countries", (req: Request, res: Response) => {
+    let errorCode = 401
+
+    try {
+        const authorization: string = req.headers.authorization as string
+        if (!authorization || authorization.length < 10) {
+            errorCode = 401
+            throw new Error("Não autorizado.")
         }
+
+        if (!req.body.name && !req.body.capital && !req.body.continent) {
+            throw new Error("Parâmetros inválidos.")
+        }
+
+        const countryName : number = countries.findIndex((country) => {
+            return country.name === req.body.name
+        })
+
+        if (countryName !== -1) {
+            errorCode = 409
+            throw new Error("País já existente")
+        }
+
+        const newCountry: country = {
+            id: Date.now(),
+            name: req.body.name,
+            capital: req.body.capital,
+            continent: req.body.continent
+        }
+
+        countries.push(newCountry)
+
+        res.status(200).send({ message: "Sucesso!", country: newCountry})
+
+    } catch (error: any) {
+        console.log(error)
+        res.status(errorCode).send(error.message)
     }
 })
