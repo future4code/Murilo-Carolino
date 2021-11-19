@@ -1,0 +1,17 @@
+{
+  "name": "aula41-node-e-package",
+  "version": "1.0.0",
+  "description": "Aprendendo a usar node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "clear && node exercicio1.js"
+  },
+  "keywords": [
+    "node",
+    "backend",
+    "npm"
+  ],
+  "author": "Murilo",
+  "license": "ISC"
+}
