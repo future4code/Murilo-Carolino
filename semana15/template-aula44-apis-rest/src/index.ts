@@ -169,8 +169,26 @@ app.post("/users", (req: Request, res: Response) => {
       throw new Error("Confira se preencheu todos os campos")
     }
 
+    if (typeof name !== "string") {
+      throw new Error("Nome inválido")
+    }
+
+    if (typeof email !== "string") {
+      throw new Error("Email inválido")
+    }
+
+    if (typeof age !== "number") {
+      throw new Error("Idade inválida")
+    }
+
+    users.forEach(user => {
+      if (user.email === email) {
+        throw new Error("Email já cadastrado")
+      }
+    })
+
     const newUser: User = {
-      id: id,
+      id: users.length + 1,
       name: name,
       email: email,
       type: type,
@@ -192,3 +210,79 @@ a) Não mudou nada, consegui adicionar um novo usuário tanto com o método post
 b) O put serve para atualizar recursos que já estejam no banco, caso não houver ele adicionar um novo. Em contra partida o post, 
 somente adiciona um novo recurso.
 */
+
+// DESAFIOS
+// Exercício 5
+
+app.put("/users/:id", (req: Request, res: Response) => {
+  try {
+    const id = Number(req.params.id)
+
+    if (isNaN(id)) {
+      throw new Error("Id inválido")
+    }
+
+    users.forEach((user) => {
+      if (user.id === id) {
+        user.name += "-ALTERADO"
+        return res.status(200).end
+      }
+    })
+
+    res.status(204).send("Usuário não encontrado")
+
+  } catch (error: any) {
+    res.status(400).send(error.message)
+  }
+
+})
+
+// Exercício 6
+
+app.patch("/users/:id", (req: Request, res: Response) => {
+  try {
+    const id = Number(req.params.id)
+
+    if (isNaN(id)) {
+      throw new Error("Id inválido")
+    }
+
+    users.forEach((user) => {
+      if (user.id === id) {
+        user.name += "-REALTERADO"
+        return res.status(200).end
+      }
+    })
+
+    res.status(204).send("Usuário não encontrado")
+
+  } catch (error: any) {
+    res.status(400).send(error.message)
+  }
+
+})
+
+// Exercício 7
+
+app.put("/users/:id", (req: Request, res: Response) => {
+  try {
+    const id = Number(req.params.id)
+
+    if (isNaN(id)) {
+      throw new Error("Id inválido")
+    }
+
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].id === id) {
+        users.splice(i, 1)
+        return res.status(200).end()
+      }
+    }
+
+    res.status(204).send("Usuário não encontrado")
+
+  } catch (error: any) {
+    res.status(400).send(error.message)
+  }
+
+})
