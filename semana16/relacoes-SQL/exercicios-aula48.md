@@ -107,3 +107,13 @@ Não é possível pois como novamente ocorre e foi mencionado acima, não ha com
 
 O erro acontece pois como esse ator foi referenciado em outra tabela, para que eu possa deletá-lo, eu teria que excluir as referências do mesmo nessas tabelas, e depois enfim poder excluir da tabela padrão.
 
+# Exercício 3
+
+> **a.**
+Essa query está juntando duas tabelas, aonde ambas possuem informações adicionais para a outra, então ao se pegar a tabela movie, faz-se o join com a de rating, e dessa forma ao inserir o comando ON, é necessário passar a condição para que essas duas tabelas sejam relacionadas, e fazer as correspondências corretas entre ambas.
+
+> **b.**
+~~~SQL
+SELECT title, Movie.id, rate FROM Movie 
+INNER JOIN Rating ON Movie.id = Rating.movie_id;
+~~~
