@@ -51,7 +51,24 @@ app.post("/user", async (req: Request, res: Response) => {
     }
 })
 
-const getActorById = async (id: number): Promise<any> => {
+const getUsers = async (): Promise<any> => {
+    const result= await connection("TodoListUser")
+        .select("id", "nickname")
+
+    return result
+}
+
+app.get("/user/all", async (req: Request, res: Response) => {
+    try {
+        const users = await getUsers()
+        
+        res.status(200).send({users: users})
+    } catch (error:any) {
+        res.status(400).send(error.message)
+    }
+})
+
+const getUserById = async (id: number): Promise<any> => {
     const result = await connection("TodoListUser")
         .select("id", "nickname")
         .where("id", id)
@@ -68,7 +85,7 @@ app.get("/user/:id", async (req: Request, res:Response) => {
     try {
         const id: any = req.params.id
 
-        const user = await getActorById(id)
+        const user = await getUserById(id)
         if (user.length === 0) {
             res.statusCode = 404
             throw new Error("Usuário não encontado.")
@@ -169,6 +186,38 @@ app.get("/task/:id", async (req: Request, res: Response) => {
     }    
 })
 
+const getTasksByUserId = async (creatorUserId: Number): Promise<any> => {
+    const result = await connection("TodoListUser")
+        .innerJoin("TodoListTask", "TodoListUser.id", "TodoListTask.creator_user_id")
+        .select("TodoListTask.id", "title", "description", "status", "limit_date", "creator_user_id", "nickname")
+        .where("TodoListTask.creator_user_id", creatorUserId)
+
+    return result
+}
+
+app.get("/task", async (req: Request, res:Response) => {
+    try {
+        const id = Number(req.query.creator_user_id)
+        if (!id) {
+            res.statusCode = 422
+            throw new Error("ID de usuário não informado.")
+        }
+
+        const tasks = await getTasksByUserId(id)
+        let formatedDate = tasks.map((task: any) => {
+            let formated = task.limit_date
+            let realDate = ((formated.getDate() )) + "/" + ((formated.getMonth() + 1)) + "/" + formated.getFullYear()
+            return (
+                {...task, limit_date: realDate}
+            )
+        })
+
+        res.status(200).send({tasks: formatedDate})
+    } catch (error:any) {
+        res.status(res.statusCode).send(error.message)
+    }
+})
+
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
         const address = server.address() as AddressInfo;
@@ -177,3 +226,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
         console.error(`Failure upon starting server.`);
     }
 })
+
