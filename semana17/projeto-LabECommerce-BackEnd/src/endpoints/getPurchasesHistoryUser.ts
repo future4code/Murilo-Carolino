@@ -6,7 +6,7 @@ export const getPurchasesHistoryUser = async (req: Request, res: Response): Prom
         const {user_id} = req.params
 
         const purchases = await connection.raw(`
-            SELECT * FROM labecommerce_purchases
+            SELECT *, labecommerce_users.name as userName FROM labecommerce_purchases
             JOIN labecommerce_users
             ON labecommerce_purchases.user_id = labecommerce_users.id
             JOIN labecommerce_products
