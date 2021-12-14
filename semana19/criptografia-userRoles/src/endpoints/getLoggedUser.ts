@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { functionGetUserById } from "../data/functionGetUserById";
 import { Authenticator } from "../services/Authenticator";
+import { USER_ROLES } from "../types";
 
 
 export default async function getLoggedUser(
@@ -18,12 +19,14 @@ export default async function getLoggedUser(
          throw new Error("token invalido ou nao passado no headers")
       }
 
-      if (tokenData.role !== "normal") {
+      if (tokenData.role !== USER_ROLES.NORMAL) {
+         res.statusCode = 403
          throw new Error("Somente usuários do tipo 'normal' podem acessar essa funcionalidade");
       }
 
       const user = await functionGetUserById(tokenData.id)
-
+      console.log(user)
+      
       res.status(200).send({
          id: user.id,
          email: user.email,
@@ -34,8 +37,8 @@ export default async function getLoggedUser(
 
       if (res.statusCode === 200) {
          res.status(500).end()
+      } else {
+         res.send(error.message)
       }
-
-      res.end()
    }
 }

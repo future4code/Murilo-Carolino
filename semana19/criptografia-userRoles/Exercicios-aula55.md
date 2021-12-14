@@ -42,83 +42,11 @@ ADD
     COLUMN role ENUM("normal", "admin") NOT NULL DEFAULT "normal";
 ```
 
-_b._ 
+_b., c. e d._ Exercícios resolvidos no código.
 
-```Typescript
-class Authenticator {
 
-    generateToken = (payload: authenticationData) => {
-        const token = sign(
-            {payload},
-            process.env.JWT_KEY,
-            {expiresIn: '10min'}
-        )
-
-        return token
-    }
-}
-
-interface authenticationData {
-   id: string
-}
-```
 
 ### Exercício 4
 
-Resolvido na pasta endpoints, arquivo createUser.ts
-
-### Exercício 5
-
-_a._ 
-```Typescript
-const functionGetUserByEmail = async (email: string): Promise<any> => {
-    const result = await connection('aula55_User')
-        .select('*')
-        .where('email', email)
-
-    return result
-}
-```
-### Exercício 6
-
-Resolvido na pasta endpoints, arquivo login.ts
-
-### Exercício 7
-
-_a._ Permite que a tipagem seja qualquer tipo de variável, pois podemos receber qualquee tipo de valor para a variável que estamos retornando.
-
-_b._
-```Typescript
-getTokenData = (token: string) => {
-    try {
-        const tokenData = verify(
-            token,
-            process.env.JWT_KEY
-        ) as any
-
-        return {
-            id: tokenData.id
-        }
-    } catch (error) {
-        console.log(error)
-        return null
-    }
-}
-```
-
-### Exercício 8
-
-_a._ 
-```Typescript
-const functionGetUserById = async (id: string): Promise<any> => {
-    const result = await connection('aula55_User')
-        .select('*')
-        .where('id', id)
-
-    return result[0]
-}
-```
-
-_b._ 
-
 Resolvido na pasta endpoints, arquivo getLoggedUser.ts
+
