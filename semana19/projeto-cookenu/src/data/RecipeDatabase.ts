@@ -20,13 +20,13 @@ export class RecipeDatabase extends BaseDatabase {
         }
     }
 
-    async getUserProfile(id: string): Promise<Recipe[]> {
+    async getRecipe(id: string): Promise<Recipe> {
         try {
-            const user = await RecipeDatabase.connection('Cookenu_recipe')
-                .select('id', 'name', 'email')
+            const recipe = await RecipeDatabase.connection('Cookenu_recipe')
+                .select('id', 'title', 'description', 'creationDate')
                 .where("id", id)
 
-            return user[0]
+            return recipe[0]
 
         } catch (error:any) {
             throw new Error(error.sqlMessage || error.message )
