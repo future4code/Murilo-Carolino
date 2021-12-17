@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 import app from "./app"
+import createRecipe from "./endpoints/createRecipe"
 import getProfile from "./endpoints/getProfile"
 import getUserById from "./endpoints/getUserById"
 import login from "./endpoints/login"
@@ -12,5 +13,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.post("/signup", signup)
 app.post("/login", login)
+app.post("/recipe", createRecipe)
+
 app.get("/user/profile", getProfile)
 app.get("/user/:id", getUserById)

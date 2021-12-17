@@ -1,8 +1,6 @@
 import { User } from "../entities/User";
 import { BaseDatabase } from "./BaseDatabase";
 
-
-
 export class UserDatabase extends BaseDatabase {
 
     async createUser(user: User) {
