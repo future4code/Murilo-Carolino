@@ -33,4 +33,17 @@ export class UserDatabase extends BaseDatabase {
             throw new Error(error.sqlMessage || error.message )
         }
     }
+
+    async getUserProfile(id: string): Promise<User[]> {
+        try {
+            const user = await UserDatabase.connection('Cookenu_user')
+                .select('id', 'name', 'email')
+                .where("id", id)
+
+            return user[0]
+
+        } catch (error:any) {
+            throw new Error(error.sqlMessage || error.message )
+        }
+    }
 }

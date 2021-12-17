@@ -23,7 +23,7 @@ export class Authenticator {
                 process.env.JWT_KEY as string
             ) as any
 
-            return tokenData
+            return tokenData.payload
             
         } catch (error) {
             console.log(error)
