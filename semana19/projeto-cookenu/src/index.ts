@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 import app from "./app"
+import login from "./endpoints/login"
 import signup from "./endpoints/signup"
 
 app.get("/", (req: Request, res: Response) => {
@@ -8,3 +9,4 @@ app.get("/", (req: Request, res: Response) => {
 })
 
 app.post("/signup", signup)
+app.post("/login", login)
