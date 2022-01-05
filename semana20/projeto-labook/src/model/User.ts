@@ -1,12 +1,12 @@
-export interface authenticationData {
+export interface AuthenticationData {
     id: string
 }
 
-export interface userCredentials {
+export interface UserCredentials {
     email: string
-    password: string
+    senha: string
 }
 
-export interface user extends authenticationData, userCredentials {
-    name: string
+export interface User extends AuthenticationData, UserCredentials {
+    nome: string
 }

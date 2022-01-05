@@ -3,7 +3,7 @@ export enum POST_TYPES {
     EVENT = "EVENT"
 }
 
-export interface post {
+export interface Post {
     userId: string
     id: string
     photo: string

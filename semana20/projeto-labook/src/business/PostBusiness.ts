@@ -1,9 +1,9 @@
 import { PostDatabase } from "../data/PostDatabase"
-import { post } from "../model/Post"
+import { Post } from "../model/Post"
 
 export class PostBusiness {
 
-    getPostById = async (id: string): Promise<post | undefined> => {
+    getPostById = async (id: string): Promise<Post | undefined> => {
 
         const post = await new PostDatabase().getPostById(id)
 
