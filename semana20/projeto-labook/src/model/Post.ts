@@ -1,13 +1,13 @@
 export enum POST_TYPES {
     NORMAL = "NORMAL",
-    EVENT = "EVENT"
+    EVENTO = "EVENTO"
 }
 
 export interface Post {
-    userId: string
     id: string
-    photo: string
-    description: string
-    creationDate: Date
-    type: POST_TYPES
+    foto: string
+    descricao: string
+    dataCriacao: Date
+    tipo: POST_TYPES
+    userId: string
 }
