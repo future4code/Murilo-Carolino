@@ -1,4 +1,4 @@
-import { Post } from "../model/Post";
+import { Like, Post } from "../model/Post";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class PostDatabase extends BaseDatabase {
@@ -16,5 +16,18 @@ export class PostDatabase extends BaseDatabase {
             .where({id})
 
         return result[0]  
+    }
+
+    likePost = async (newLike: Like) => {
+
+        await this.connection("labook_likes")
+            .insert(newLike)
+    }
+
+    unlikePost = async (unlike: Like) => {
+
+        await this.connection("labook_likes")
+            .delete()
+            .where(unlike)
     }
 }

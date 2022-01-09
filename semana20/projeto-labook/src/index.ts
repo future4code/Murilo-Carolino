@@ -14,6 +14,7 @@ app.post("/user", userController.signUp)
 app.post("/user/login", userController.login)
 
 app.post("/posts/create", postController.createPost)
+app.post("/posts/like/:postId", postController.likePost)
+app.delete("/posts/like/:postId", postController.unlikePost)
 app.get("/posts/:id", postController.getPostById)
-
 

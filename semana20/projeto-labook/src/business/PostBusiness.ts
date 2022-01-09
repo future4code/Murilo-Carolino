@@ -1,5 +1,6 @@
 import { PostDatabase } from "../data/PostDatabase"
-import { Post, POST_TYPES } from "../model/Post"
+import { UserDatabase } from "../data/UserDatabase"
+import { Like, Post, POST_TYPES } from "../model/Post"
 import { Authenticator } from "../services/Authenticator"
 import { IdGenerator } from "../services/IdGenerator"
 
@@ -33,5 +34,37 @@ export class PostBusiness {
         const post = await new PostDatabase().getPostById(id)
 
         return post
+    }
+
+    likePost = async (postId: string, token: string): Promise<void> => {
+
+        const tokenData = new Authenticator().getTokenData(token)
+
+        if (!tokenData) {
+            throw new Error("token inválido.")
+        }
+
+        const newLike: Like = {
+            userId: tokenData.id,
+            postId: postId
+        }
+
+        const like = await new PostDatabase().likePost(newLike)
+    }
+
+    unlikePost = async (postId: string, token: string): Promise<void> => {
+
+        const tokenData = new Authenticator().getTokenData(token)
+
+        if (!tokenData) {
+            throw new Error("token inválido.")
+        }
+
+        const unlike: Like = {
+            userId: tokenData.id,
+            postId: postId
+        }
+
+        await new PostDatabase().unlikePost(unlike)
     }
 }

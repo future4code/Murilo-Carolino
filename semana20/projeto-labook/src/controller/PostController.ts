@@ -64,4 +64,70 @@ export class PostController {
         }
     }
 
+    likePost = async (
+        req: Request,
+        res: Response
+    ) => {
+        try {
+
+            const postId = req.params.postId
+            const token = req.headers.authorization
+            
+            if (!postId) {
+                res.statusCode = 422
+                throw new Error("O campo 'postId' é obrigatório como parâmetro.")
+            }
+
+            if(!token) {
+                res.statusCode = 422
+                throw new Error("É necessária uma autorização a ser passada nos headers para acessar um post.")
+            }
+
+            const newLike = await new PostBusiness().likePost(postId, token)
+
+            res.status(201).send({message: "Você curtiu o post!"})
+            
+        } catch (error: any) {
+            console.log(error)
+            if (res.statusCode === 200) {
+                res.status(500).send({ message: "Internal server error" })
+            } else {
+                res.send({ message: error.sqlMessage || error.message })
+            }
+        }
+    }
+
+    unlikePost = async (
+        req: Request,
+        res: Response
+    ) => {
+        try {
+
+            const postId = req.params.postId
+            const token = req.headers.authorization
+            
+            if (!postId) {
+                res.statusCode = 422
+                throw new Error("O campo 'postId' é obrigatório como parâmetro.")
+            }
+
+            if(!token) {
+                res.statusCode = 422
+                throw new Error("É necessária uma autorização a ser passada nos headers para acessar um post.")
+            }
+
+            const unlikePost = await new PostBusiness().unlikePost(postId, token)
+
+            res.status(201).send({message: "Você descurtiu o post!"})
+            
+        } catch (error: any) {
+            console.log(error)
+            if (res.statusCode === 200) {
+                res.status(500).send({ message: "Internal server error" })
+            } else {
+                res.send({ message: error.sqlMessage || error.message })
+            }
+        }
+    }
+
 }

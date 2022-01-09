@@ -11,3 +11,8 @@ export interface Post {
     tipo: POST_TYPES
     userId: string
 }
+
+export interface Like {
+    userId: string
+    postId: String
+}
