@@ -1,0 +1,20 @@
+{
+  "name": "jest-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev-start": "tsnd --transpile-only --ignore-watch node_modules ./src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.6",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.9.3"
+  }
+}
