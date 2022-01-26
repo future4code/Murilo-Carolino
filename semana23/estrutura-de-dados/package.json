@@ -1,0 +1,21 @@
+{
+  "name": "estrutura-de-dados",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "exercicio1": "clear && ts-node-dev --transpile-only --ignore-watch node_modules ./src/exercicio1.ts",
+    "exercicio2": "clear && ts-node-dev --transpile-only --ignore-watch node_modules ./src/exercicio2.ts",
+    "exercicio3": "clear && ts-node-dev --transpile-only --ignore-watch node_modules ./src/exercicio3.ts",
+    "start": "tsc && node ./build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.5"
+  }
+}
