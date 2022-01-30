@@ -6,8 +6,8 @@ import { IdGenerator } from "../services/IdGenerator";
 export class UserBusiness {
 
     constructor (
-        private IdGenerator: IdGenerator,
-        private UserDatabase: UserDatabase
+        private idGenerator: IdGenerator,
+        private userDatabase: UserDatabase
     ) {}
 
     async createUser(input: UserInputDTO) {
@@ -16,8 +16,8 @@ export class UserBusiness {
             throw new InvalidInputError("Invalid input to create user")
         }
         
-        const idGenerator = new IdGenerator()
-        const id = idGenerator.generate()
+        
+        const id = this.idGenerator.generate()
 
         const newUser: UserInsertDTO = {
             id: id,
@@ -26,16 +26,14 @@ export class UserBusiness {
             participation: input.participation
         }
 
-        const userDatabase = new UserDatabase()
-        await userDatabase.createUser(newUser)
+        await this.userDatabase.createUser(newUser)
         
     }
 
     async getAllUsers() {
 
-        const userDatabase = new UserDatabase()
-        const allUsers = await userDatabase.getAllUsers()
-
+        const allUsers = await this.userDatabase.getAllUsers()
+        
         return allUsers
 
     }

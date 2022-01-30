@@ -19,7 +19,7 @@ export class UserDatabase extends BaseDatabase {
             if (error instanceof Error) {
                 throw new Error(error.message)
             } else {
-                throw new Error("Erro no banco de dado!")
+                throw new Error("Erro no banco de dados!")
             }
         }
 
@@ -42,7 +42,7 @@ export class UserDatabase extends BaseDatabase {
             if (error instanceof Error) {
                 throw new Error(error.message)
             } else {
-                throw new Error("Erro no banco de dado!")
+                throw new Error("Erro no banco de dados!")
             }
         }
 

@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
+import { UserDatabase } from "../data/UserDatabase";
 import { UserInputDTO } from "../model/User";
+import { IdGenerator } from "../services/IdGenerator";
 
 export class UserController {
 
@@ -14,7 +16,7 @@ export class UserController {
                 participation: req.body.participation
             }
 
-            const userBusiness = new UserBusiness()
+            const userBusiness = new UserBusiness(new IdGenerator, new UserDatabase)
             await userBusiness.createUser(input)
 
 
@@ -33,7 +35,7 @@ export class UserController {
 
         try {
 
-            const userBusiness = new UserBusiness()
+            const userBusiness = new UserBusiness(new IdGenerator, new UserDatabase)
             const allUsers = await userBusiness.getAllUsers()
 
             res.status(200).send(allUsers)
