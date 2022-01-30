@@ -5,6 +5,11 @@ import { IdGenerator } from "../services/IdGenerator";
 
 export class UserBusiness {
 
+    constructor (
+        private IdGenerator: IdGenerator,
+        private UserDatabase: UserDatabase
+    ) {}
+
     async createUser(input: UserInputDTO) {
         
         if(!input.name || !input.lastName || !input.participation) {
@@ -24,5 +29,14 @@ export class UserBusiness {
         const userDatabase = new UserDatabase()
         await userDatabase.createUser(newUser)
         
+    }
+
+    async getAllUsers() {
+
+        const userDatabase = new UserDatabase()
+        const allUsers = await userDatabase.getAllUsers()
+
+        return allUsers
+
     }
 }

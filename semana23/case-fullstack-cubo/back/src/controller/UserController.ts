@@ -28,4 +28,22 @@ export class UserController {
             }
         }
     }
+
+    async getAllUsers(req: Request, res: Response) {
+
+        try {
+
+            const userBusiness = new UserBusiness()
+            const allUsers = await userBusiness.getAllUsers()
+
+            res.status(200).send(allUsers)
+
+        } catch (error) {
+            if (error instanceof Error) {
+                res.status(400).send({ message: error.message })
+            } else {
+                res.status(400).send({ message: "Unexpected error!"})
+            }
+        }
+    }
 }

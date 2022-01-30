@@ -1,4 +1,4 @@
-import { UserInsertDTO } from "../model/User";
+import { User, UserInsertDTO } from "../model/User";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
@@ -14,6 +14,29 @@ export class UserDatabase extends BaseDatabase {
                 participation: newUser.participation
             })
             .into(this.tableName.users)
+
+        } catch (error) {
+            if (error instanceof Error) {
+                throw new Error(error.message)
+            } else {
+                throw new Error("Erro no banco de dado!")
+            }
+        }
+
+    }
+
+    async getAllUsers(): Promise<User[]> {
+        try {
+
+            const users = await this.getConnection()
+            .select("*")
+            .from(this.tableName.users)
+
+            const allUsers = users.map((user) => {
+                return User.toUserModel(user)
+            })
+            
+            return allUsers
 
         } catch (error) {
             if (error instanceof Error) {
