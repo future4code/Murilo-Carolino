@@ -31,9 +31,10 @@ const DonutChart = () => {
         return [`${user.name} ${user.lastName}`, user.participation]
     })
     
-    const total = states.users.reduce((total, user) => {
-        return total + user.participation
-    }, 0)
+    //Limit 100%
+    // const total = states.users.reduce((total, user) => {
+    //     return total + user.participation
+    // }, 0)
 
     return (
         <DonutContainer>
@@ -43,7 +44,7 @@ const DonutChart = () => {
                 height="300px"
                 data={[["Name", "Participation"],
                     ...database,
-                    ["No Participation", 100 - total]
+                    // ["No Participation", 100 - total]
                 ]}
                 options={options}
             />

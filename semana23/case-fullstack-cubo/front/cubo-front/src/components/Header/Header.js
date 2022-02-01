@@ -38,6 +38,10 @@ const Header = () => {
 
     const [form, onChange, clear] = useForm(initialForm)
 
+    const maskOnlyNumber = (string) => {
+        return string.replace(/[^0-9]/g, '')
+    }
+
     return (
         <HeaderContainer>
             <FormContainer onSubmit={sendForm}>
@@ -52,7 +56,7 @@ const Header = () => {
                 <Input name="participation" 
                     placeholder="Participation"
                     value={form.participation}
-                    onChange={onChange}/>
+                    onChange={(event) => onChange(event, maskOnlyNumber)}/>
                 <Button type="submit">
                     SEND
                 </Button>
